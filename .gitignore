@@ -11,6 +11,7 @@
 *.cb
 *.cb2
 .*.lb
+.DS_Store
 
 ## Intermediate documents:
 *.dvi
@@ -21,8 +22,12 @@
 # *.eps
 # *.pdf
 
-## Generated if empty string is given at "Please type another file name for output:"
-.pdf
+.idea/
+.vscode/
+qm1data
+testibmqgo
+out/
+docker-compose.yml
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl

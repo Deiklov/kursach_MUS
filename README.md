@@ -1,2 +1,2 @@
 # kursach_MUS
-MUS term work
+Tex + pdf + artefacts fof course work MSU
