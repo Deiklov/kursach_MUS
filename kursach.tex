@@ -332,29 +332,52 @@ $\tau_f\to min$
 \[
     \theta(0)=1;\ \omega(0)=\Omega_0;\ m(0)=0
 \]
-Из $m(0)=0$ находим, что $C_0=0$
-\begin{equation}\label{solve1stage}
-    \left\{ {\begin{aligned}
-                 & 1 = C_1+C_2, \hfill             \\
-                 & \Omega_0 = C_1-C_2-u_* , \hfill \\
-            \end{aligned}} \right.
-    \Longrightarrow \left\{ {\begin{aligned}
-                 & C_0 = 0, \hfill                           \\
-                 & C_1 = \frac{1+(\Omega_0+u_*)}{2}, \hfill  \\
-                 & C_2 = \frac{1-(\Omega_0+u_*)}{2} . \hfill \\
-            \end{aligned}} \right.
-\end{equation}
-Из \eqref{solve1stage} получим
+
+Из \eqref{solvekoshi} получим
 \begin{equation}\label{solvefull1stage}
     \left\{ {\begin{aligned}
-                 & m_1(\tau) = u_*\tau, \hfill                                                                                \\
-                 & \theta_1(\tau) = \frac{1+(\Omega_0+u_*)}{2}e^\tau+\frac{1-(\Omega_0+u_*)}{2}e^{-\tau}-C_0-u_*\tau , \hfill \\
-                 & \omega_1(\tau) = \frac{1+(\Omega_0+u_*)}{2}e^\tau-\frac{1-(\Omega_0+u_*)}{2}e^{-\tau}-u_*  . \hfill        \\
+                 & m_1(\tau) = u_*\tau, \hfill                                                                              \\
+                 & \theta_1(\tau) = \frac{u_*+\Omega_0}{2}(e^\tau-e^{-\tau})+\frac{1}{2}(e^\tau+e^{-\tau})-u_*\tau , \hfill \\
+                 & \omega_1(\tau) = \frac{1}{2}(e^\tau-e^{-\tau})+\frac{u_*+\Omega_0}{2}(e^\tau+e^{-\tau})-u_*  . \hfill    \\
             \end{aligned}} \right.
 \end{equation}
 Этап 2. Начальные условия $u=-u_*$
 \[
     \theta(\tau_1)=\theta_1(\tau_1);\ \omega(\tau_1)=\omega_1(\tau_1);\ m(\tau_1)=m_1(\tau_1)
 \]
-
+\begin{equation}\label{basecond2stage}
+    \left\{ {\begin{aligned}
+                 & m(\tau_1) = u_*\tau_1, \hfill                                                                                          \\
+                 & \theta(\tau_1) = \frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*\tau_1 , \hfill \\
+                 & \omega(\tau_1) = \frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})-u_*  . \hfill      \\
+            \end{aligned}} \right.
+\end{equation}
+Подставим начальные условия из \eqref{basecond2stage} в \eqref{solvekoshi}, получим
+\begin{equation}\label{final2stage}
+    \left\{ {\begin{aligned}
+                 & m_2(\tau) = 2u_*\tau_1-u\tau, \hfill                                                                                                                            \\
+                 & \theta_2(\tau) = \frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(2\tau_1-e^{\tau_1-\tau}+e^{-\tau_1+\tau}-\tau) , \hfill \\
+                 & \omega_2(\tau) = \frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau}-e^{-\tau_1+\tau})  . \hfill           \\
+            \end{aligned}} \right.
+\end{equation}
+Этап 3. Начальные условия $u=u_*$
+\[
+    \theta(\tau_f)=0;\ \omega(\tau_f)=0;\ m(\tau_f)=0
+\]
+Подставим начальные условия в \eqref{solvekoshi}, получим
+\begin{equation}\label{final3stage}
+    \left\{ {\begin{aligned}
+                 & m_3(\tau) = 2u_*\tau_f+u\tau, \hfill                                                   \\
+                 & \theta_3(\tau) = \frac{u}{2}(e^{-\tau_f+\tau}+e^{\tau_f-\tau})-u , \hfill              \\
+                 & \omega_3(\tau) = \frac{u}{2}(e^{-\tau_f+\tau}-e^{\tau_f-\tau})-u(\tau-\tau_f) . \hfill \\
+            \end{aligned}} \right.
+\end{equation}
+Теперь найдем решения, учитывая что
+\begin{equation}\label{T2equalT3}
+    \left\{ {\begin{aligned}
+                 & m_2(\tau_2) = m_3(\tau_2), \hfill                                                   \\
+                 & \theta_2(\tau_2) =  \theta_3(\tau_2), \hfill              \\
+                 & \omega_2(\tau_2) = \omega_3(\tau_2) . \hfill \\
+            \end{aligned}} \right.
+\end{equation}
 \end{document}
