@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,14pt]{article}
 
 
 %%% Работа с русским языком
@@ -230,11 +230,11 @@
 безразмерному времени $\tau$. Необходимо решение системы
 перевести из начального положения
 \begin{equation}\label{9}
-    \theta\left(0\right)=1;\ \dot{\theta}\left(0\right)=\frac{t_\ast}{\varphi_\ast}\omega_0;\ m\left(0\right)=0
+    \theta(0)=1;\ \dot{\theta}(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
 \end{equation}
 в положение
 \begin{equation}\label{9}
-    \theta\left(\tau_f\right)=0;\ \dot{\theta}\left(\tau_f\right)=0;\ m\left(\tau_f\right)=0
+    \theta(\tau_f)=0;\ \dot{\theta}(\tau_f)=0;\ m(\tau_f)=0
 \end{equation}
 с помощью ограниченного управления
 \[
@@ -278,7 +278,7 @@ det $W\neq0$, значит система полностью управляем�
 
 $|u|<U_{max}$
 \[
-    \theta(0)=1;\ \omega(0)=\frac{t_\ast}{\varphi_\ast}\omega_0;\ m(0)=0
+    \theta(0)=1;\ \omega(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
 \]
 $\tau_f\to min$
 
@@ -302,12 +302,59 @@ $\tau_f\to min$
 
 Тогда для условия максимизации функции Понтрягина
 \[
-    u= 
-\begin{cases}
-    -U_{max},& \text{при $\psi_3<0$}\\
-    -U_{min},& \text{при $\psi_3\geq0$}
-\end{cases}
+    u=
+    \begin{cases}
+        -U_{max}, & \text{при $\psi_3<0$}    \\
+        -U_{min}, & \text{при $\psi_3\geq0$}
+    \end{cases}
 \]
 
+Решая систему \eqref{7}, получим
+\[
+    \psi^{''}_2=\psi_2
+\]
+\begin{equation}\label{psisystem}
+    \left\{ {\begin{aligned}
+                 & \psi_1 = -C_1e^\tau+C_2e^{-\tau}+C_3, \hfill  \\
+                 & \psi_2 = C_1e^\tau+C_2e^{-\tau} , \hfill      \\
+                 & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 . \hfill \\
+            \end{aligned}} \right.
+\end{equation}
+Решая систему \eqref{koshisystem}, получим
+\begin{equation}\label{solvekoshi}
+    \left\{ {\begin{aligned}
+                 & m(\tau) = u_*\tau+C_0, \hfill                              \\
+                 & \theta(\tau) = C_1e^\tau+C_2e^{-\tau}-C_0-u_*\tau , \hfill \\
+                 & \omega(\tau) = C_1e^\tau-C_2e^{-\tau}-u_*  . \hfill        \\
+            \end{aligned}} \right.
+\end{equation}
+Этап 1. Начальные условия $u=u_*$
+\[
+    \theta(0)=1;\ \omega(0)=\Omega_0;\ m(0)=0
+\]
+Из $m(0)=0$ находим, что $C_0=0$
+\begin{equation}\label{solve1stage}
+    \left\{ {\begin{aligned}
+                 & 1 = C_1+C_2, \hfill             \\
+                 & \Omega_0 = C_1-C_2-u_* , \hfill \\
+            \end{aligned}} \right.
+    \Longrightarrow \left\{ {\begin{aligned}
+                 & C_0 = 0, \hfill                           \\
+                 & C_1 = \frac{1+(\Omega_0+u_*)}{2}, \hfill  \\
+                 & C_2 = \frac{1-(\Omega_0+u_*)}{2} . \hfill \\
+            \end{aligned}} \right.
+\end{equation}
+Из \eqref{solve1stage} получим
+\begin{equation}\label{solvefull1stage}
+    \left\{ {\begin{aligned}
+                 & m_1(\tau) = u_*\tau, \hfill                                                                                \\
+                 & \theta_1(\tau) = \frac{1+(\Omega_0+u_*)}{2}e^\tau+\frac{1-(\Omega_0+u_*)}{2}e^{-\tau}-C_0-u_*\tau , \hfill \\
+                 & \omega_1(\tau) = \frac{1+(\Omega_0+u_*)}{2}e^\tau-\frac{1-(\Omega_0+u_*)}{2}e^{-\tau}-u_*  . \hfill        \\
+            \end{aligned}} \right.
+\end{equation}
+Этап 2. Начальные условия $u=-u_*$
+\[
+    \theta(\tau_1)=\theta_1(\tau_1);\ \omega(\tau_1)=\omega_1(\tau_1);\ m(\tau_1)=m_1(\tau_1)
+\]
 
 \end{document}
