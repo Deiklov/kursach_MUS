@@ -380,17 +380,38 @@ $\tau_f\to min$
             \end{aligned}} \right.
 \end{equation}
 Получим
-\begin{equation}\label{findtau}
+\begin{equation}\label{findtau1}
     \footnotesize\left\{ {\begin{aligned}
-                 & -u_*\tau_f+u_*\tau_2=2u_*\tau_1-u_*\tau_2, \hfill                                                                                                                                                                         \\
-                 & \frac{u}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2})-u_*(\tau_2-\tau_f) =\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(2\tau_1-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}-\tau_2), \hfill \\
-                 & \frac{u}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill                             \\
+                 & -u_*\tau_f+u_*\tau_2=2u_*\tau_1-u_*\tau_2, \hfill                                                                                                                                                                           \\
+                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2})-u_*(\tau_2-\tau_f) =\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(2\tau_1-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}-\tau_2), \hfill \\
+                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill                             \\
+            \end{aligned}} \right.
+\end{equation}
+\begin{equation}\label{findtau2}
+    \footnotesize\left\{ {\begin{aligned}
+                 & \tau_f=2(\tau_2-\tau_1), \hfill                                                                                                                                                                                         \\
+                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2})+u_*(\tau_f+2(\tau_1-\tau_2)) =\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}), \hfill \\
+                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-2u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill                         \\
+            \end{aligned}} \right.
+\end{equation}
+\begin{equation}\label{findtau3}
+    \footnotesize\left\{ {\begin{aligned}
+                 & \tau_f=2(\tau_2-\tau_1), \hfill                                                                                                                                                          \\
+                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2}) =\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}), \hfill      \\
+                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-2u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill \\
             \end{aligned}} \right.
 \end{equation}
 Введем замену переменных
 \[
-    x=e^{\tau_1} ,\,\,y=e^{\tau_2} ,\,\,z=e^{\frac{\tau_f}{2}} 
+    x=e^{\tau_1} ,\,\,y=e^{\tau_2} ,\,\,z=e^{\frac{\tau_f}{2}}
 \]
+\begin{equation}\label{findtau3}
+    \left\{ {\begin{aligned}
+                 & z=\frac{y}{x}, \hfill                                                                                                                         \\
+                 & \frac{u_*}{2}\big(\frac{y}{z^2}-\frac{z^2}{y}\big)=\frac{u_*+\Omega_0}{2}(x-\frac{1}{x})+\frac{1}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}-\frac{x}{y}), \hfill \\
+                 & \frac{u_*}{2}\big(\frac{y}{z^2}+\frac{z^2}{y}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}+\frac{x}{y}). \hfill                                                                                                                                      \\
+            \end{aligned}} \right.
+\end{equation}
 % Тогда из \eqref{findtau} получим
 % \begin{equation}\label{xyz}
 %     \footnotesize\left\{ {\begin{aligned}
