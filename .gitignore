@@ -12,7 +12,8 @@
 *.cb2
 .*.lb
 .DS_Store
-
+IBMMQC925
+venv
 ## Intermediate documents:
 *.dvi
 *.xdv
