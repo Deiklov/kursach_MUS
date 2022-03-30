@@ -142,7 +142,7 @@
 его с полученным эталонным значением.
 \newpage
 \section{Математическая модель и постановка задачи управления}
-Для описания движения тела человека в сагиттальной плоскости ис-пользуем традиционную модель перевернутого маятника (см. рисунок 1).
+Для описания движения тела человека в сагиттальной плоскости используем традиционную модель перевернутого маятника (см. рисунок 1).
 
 \begin{figure}[h!]
     \centering
@@ -171,40 +171,37 @@
     J\ddot{\varphi}= mgl\varphi+M
 \end{equation}
 
-Необходимо перевести решение уравнения из начального положения:
+Необходимо перевести решение уравнения из начального положения
 \begin{equation}\label{7}
-    \varphi(0)=\varphi_0,\dot{\varphi}(0)=\omega_0.
+    \varphi(0)=\varphi_0, \,\dot{\varphi}(0)=\omega_0
 \end{equation}
 
-В конечное положение:
+в конечное положение
 \begin{equation}\label{8}
-    \varphi(t_k)=\varphi_k,\dot{\varphi}(t_k)=0.
+    \varphi(t_k)=\varphi_k,\, \dot{\varphi}(t_k)=0.
 \end{equation}
 
 Перевод положения тела должен происходить за минимальное
 время $t_k$, с помощью изменений значения момента $M$ в
 голеностопном суставе.
 
-Будем принимать во внимание условия ограниченности величины
+Будем принимать во внимание условия ограниченности скорости изменения
 момента в голеностопном суставе
-\[
-    M^-\le\ M\le\ M^+
-\]
-и скорости его изменения
 \[
     U^-\le\dot{M}\le\ U^+.
 \]
 
 Будем считать, что за время толчка нервная система человека
 не успела среагировать и момент в голеностопном суставе остался
-неизменным, тогда:
+неизменным и соответствует значению, обеспечивающему положение
+равновесия человека до начала движения и после его завершения
 \[
     M(0)=M\left(t_k\right)=-mgl\varphi_k;
 \]
 
 Для дальнейшего анализа задачи представим приведенные
 соотношения в безразмерном виде. Для этого перейдем
-к новым переменным:
+к новым переменным
 \[
     \theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{mgl\varphi}.
 \]
@@ -213,14 +210,14 @@
 начального и конечного значений угла в голеностопном
 суставе при выполнении пробы $\varphi_\ast=\varphi_0-\varphi_k$
 
-Введем безразмерное время:
+Введем безразмерное время
 \[
     \tau=\frac{t}{t_\ast},\ t_\ast=\sqrt{\frac{J}{mgl}}.
 \]
 
 Управлением $u$ будем считать скорость изменения безразмерного
 момента. Для этих переменных обезразмеренные уравнения движения
-примут следующий вид:
+примут следующий вид
 \[
     \theta^{''}=\theta+m;\ m^{'}=u
 \]
@@ -284,7 +281,7 @@ $\tau_f\to min$
 
 Запишем функцию Понтрягина
 \[
-    H(\Psi(t),y(t),u(t))=\psi_1*\omega+\psi_2*(\theta+m)+\psi_3*u
+    H(\Psi(t),y(t),u(t))=\psi_1\cdot\omega+\psi_2\cdot(\theta+m)+\psi_3\cdot u
 \]
 Сопряженная система уравнений:
 \[
@@ -293,9 +290,9 @@ $\tau_f\to min$
 В данной задаче $y_1 = \theta, y_2 = \omega, y_3=m$, тогда сопряженная система примет вид
 \begin{equation} \label{7}
     \left\{ {\begin{aligned}
-                 & \dot \psi _\theta  =  - \frac{{\partial H}}{{\partial \theta}} = - \psi_2\hfill   \\
-                 & \dot \psi _\omega   =  - \frac{{\partial H}}{{\partial \omega }} = - \psi_1\hfill \\
-                 & \dot \psi _m   =  - \frac{{\partial H}}{{\partial m }} = - \psi_2 . \hfill        \\
+                 & \dot \psi _1  =  - \frac{{\partial H}}{{\partial \theta}} = - \psi_2\hfill   \\
+                 & \dot \psi _2   =  - \frac{{\partial H}}{{\partial \omega }} = - \psi_1\hfill \\
+                 & \dot \psi _3   =  - \frac{{\partial H}}{{\partial m }} = - \psi_2 . \hfill   \\
             \end{aligned}} \right.
 \end{equation}
 При $\psi_3\equiv0$ следует, что $\psi_2\equiv0$ и $\psi_1\equiv0$, следовательно особого управления нет
@@ -320,11 +317,10 @@ $\tau_f\to min$
             \end{aligned}} \right.
 \end{equation}
 
-Анализируя корни уравнения $\psi_3(\tau)=0$, для различного набора
-коэффициентов $C_1,C_2,C_3$, получим, что максимум может
-быть 2 корня. Учитывая условие максимизации выражения $\psi_3u$, получим не более двух переключений для $u$.
+Анализируя корни уравнения $\psi_3(\tau)=0$, для различной комбинации
+коэффициентов $C_1,C_2,C_3$, получим, что число корней не может быть больше двух. В системе может быть не более двух переключений $u$.
 
-Пусть $u^*=const$ управление на первом участке траектории до первого переключения $u^*=U_{max}$ или $u^*=-U_{max}=U_{min}$
+Пусть $u^*=const$ управление на первом участке траектории до первого переключения $u^*=U_{max}$ или $u^*=U_{min}=-U_{max}$
 
 Решая систему \eqref{koshisystem}, получим
 \begin{equation}\label{solvekoshi}
@@ -334,6 +330,11 @@ $\tau_f\to min$
                  & \omega(\tau) = C_1e^\tau-C_2e^{-\tau}-u_*  . \hfill        \\
             \end{aligned}} \right.
 \end{equation}
+Пусть первое переключение управления происходит в момент времени
+$\tau=\tau_1$, а второе в момент времени
+$\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на трех этапах,
+при переходе между которыми меняется управление.
+
 Этап 1. $u=u_*$ начальные условия
 \[
     \theta(0)=1;\ \omega(0)=\Omega_0;\ m(0)=0
@@ -342,9 +343,9 @@ $\tau_f\to min$
 Из \eqref{solvekoshi} получим
 \begin{equation}\label{stage11}
     \left\{ {\begin{aligned}
-                 & 0 = C_0, \hfill                                            \\
-                 & 1 = C_1e^\tau+C_2e^{-\tau}-C_0 , \hfill \\
-                 & \Omega_0 = C_1e^\tau-C_2e^{-\tau}-u_*  . \hfill        \\
+                 & 0 = C_0, \hfill                                 \\
+                 & 1 = C_1e^\tau+C_2e^{-\tau}-C_0 , \hfill         \\
+                 & \Omega_0 = C_1e^\tau-C_2e^{-\tau}-u_*  . \hfill \\
             \end{aligned}} \right.
 \end{equation}
 \begin{equation}\label{solvefull1stage}
@@ -354,7 +355,7 @@ $\tau_f\to min$
                  & \omega_1(\tau) = \frac{1}{2}(e^\tau-e^{-\tau})+\frac{u_*+\Omega_0}{2}(e^\tau+e^{-\tau})-u_*  . \hfill    \\
             \end{aligned}} \right.
 \end{equation}
-Этап 2. Начальные условия $u=-u_*$
+Этап 2. $u=-u_*$ начальные условия
 \[
     \theta(\tau_1)=\theta_1(\tau_1);\ \omega(\tau_1)=\omega_1(\tau_1);\ m(\tau_1)=m_1(\tau_1)
 \]
@@ -409,6 +410,7 @@ $\tau_f\to min$
                  & \frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill                             \\
             \end{aligned}} \right.
 \end{equation}
+Сократим первое уравнение на $u_*$, выражение для $\tau_f$ из первого уравнения подставим во второе и третье
 \begin{equation}\label{findtau2}
     \footnotesize\left\{ {\begin{aligned}
                  & \tau_f=2(\tau_2-\tau_1), \hfill                                                                                                                                                                                         \\
@@ -416,6 +418,7 @@ $\tau_f\to min$
                  & \frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-2u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill                         \\
             \end{aligned}} \right.
 \end{equation}
+Слагаемое $u_*(\tau_f+2(\tau_1-\tau_2))$ обнуляется
 \begin{equation}\label{findtau3}
     \footnotesize\left\{ {\begin{aligned}
                  & \tau_f=2(\tau_2-\tau_1), \hfill                                                                                                                                                                 \\
