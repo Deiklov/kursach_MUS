@@ -168,7 +168,7 @@
 Запишем уравнение моментов для малых значений угла $\varphi$ и
 скорости его изменения запишем, как традиционно принято для этой задачи.
 \begin{equation}\label{6}
-    J\ddot{\varphi}= mgl\varphi+M
+    J\ddot{\varphi}= m_Tgl\varphi+M
 \end{equation}
 
 Необходимо перевести решение уравнения из начального положения
@@ -196,14 +196,14 @@
 неизменным и соответствует значению, обеспечивающему положение
 равновесия человека до начала движения и после его завершения
 \[
-    M(0)=M\left(t_k\right)=-mgl\varphi_k;
+    M(0)=M\left(t_k\right)=-m_Tgl\varphi_k;
 \]
 
 Для дальнейшего анализа задачи представим приведенные
 соотношения в безразмерном виде. Для этого перейдем
 к новым переменным
 \[
-    \theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{mgl\varphi}.
+    \theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{m_Tgl\varphi}.
 \]
 
 В качестве характерного значения угла выберем разность
@@ -212,7 +212,7 @@
 
 Введем безразмерное время
 \[
-    \tau=\frac{t}{t_\ast},\ t_\ast=\sqrt{\frac{J}{mgl}}.
+    \tau=\frac{t}{t_\ast},\ t_\ast=\sqrt{\frac{J}{m_Tgl}}.
 \]
 
 Управлением $u$ будем считать скорость изменения безразмерного
@@ -437,6 +437,45 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
                  & \frac{u_*}{2}\big(\frac{y}{z^2}+\frac{z^2}{y}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}+\frac{x}{y}). \hfill \\
             \end{aligned}} \right.
 \end{equation}
+\begin{equation}\label{ytozx}
+    \left\{ {\begin{aligned}
+                 & y=zx, \hfill                                                                                                                                                      \\
+                 & \frac{u_*}{2}\big(\frac{zx}{z^2}-\frac{z^2}{zx}\big)=\frac{u_*+\Omega_0}{2}(x-\frac{1}{x})+\frac{1}{2}(x+\frac{1}{x})-u_*(\frac{zx}{x}-\frac{x}{zx}), \hfill      \\
+                 & \frac{u_*}{2}\big(\frac{zx}{z^2}+\frac{z^2}{zx}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(\frac{zx}{x}+\frac{x}{zx}). \hfill \\
+            \end{aligned}} \right.
+\end{equation}
+\begin{equation}\label{ytozx2}
+    \left\{ {\begin{aligned}
+                 & y=zx, \hfill                                                                                                                                    \\
+                 & \frac{u_*}{2}\big(\frac{x}{z}-\frac{z}{x}\big)=\frac{u_*+\Omega_0}{2}(x-\frac{1}{x})+\frac{1}{2}(x+\frac{1}{x})-u_*(z-\frac{1}{z}), \hfill      \\
+                 & \frac{u_*}{2}\big(\frac{x}{z}+\frac{z}{x}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(z+\frac{1}{z}). \hfill \\
+            \end{aligned}} \right.
+\end{equation}
+Сложим и вычтем 2 и 3 уравнения из \eqref{ytozx2}, получим
+\begin{equation}\label{ytozx3}
+    \left\{ {\begin{aligned}
+                 & y=zx, \hfill                                                                                                               \\
+                 & u_*\frac{z}{x}+2u_*=\frac{1-u_*-\Omega_0}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0-1}{2}(x+\frac{1}{x})-2\frac{u_*}{z}, \hfill \\
+                 & u_*\frac{x}{z}-2u_*=\frac{u_*+\Omega_0+1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0+1}{2}(x+\frac{1}{x})-2u_*z. \hfill          \\
+            \end{aligned}} \right.
+\end{equation}
+Решая систему \eqref{ytozx3}, получим
+\begin{equation}\label{fullquadratic1}
+    \footnotesize
+    \left\{ {\begin{aligned}
+                 & z=\frac{-1+2u_*^2+2u_*\Omega_0+\Omega_0^2-\sqrt{32u_*^3+64u_*^4+4u_*^2\Omega_0^2+4u_*\Omega_0(\Omega_0^2-1)+(\Omega_0^2-1)^2}}{2u_*(1+5u_*+\Omega_0)}, \hfill                          \\
+                 & x=\frac{-5-8u_*(2+3u_*)+10u_*\Omega_0+5\Omega_0^2-3\sqrt{1+32u_*^3(1+2u_*)-4u_*\Omega_0+2(2u_*^2-1)\Omega_0^2+4u_*\Omega_0^3+\Omega_0^4}}{4(1+2u_*+\Omega_0)(1+5u_*+\Omega_0)}. \hfill \\
+            \end{aligned}} \right .
+\end{equation}
+или
+\begin{equation}\label{fullquadratic2}
+    \footnotesize
+    \left\{ {\begin{aligned}
+                 & z=\frac{-1+2u_*^2+2u_*\Omega_0+\Omega_0^2+\sqrt{32u_*^3+64u_*^4+4u_*^2\Omega_0^2+4u_*\Omega_0(\Omega_0^2-1)+(\Omega_0^2-1)^2}}{2u_*(1+5u_*+\Omega_0)}, \hfill                          \\
+                 & x=\frac{-5-8u_*(2+3u_*)+10u_*\Omega_0+5\Omega_0^2+3\sqrt{1+32u_*^3(1+2u_*)-4u_*\Omega_0+2(2u_*^2-1)\Omega_0^2+4u_*\Omega_0^3+\Omega_0^4}}{4(1+2u_*+\Omega_0)(1+5u_*+\Omega_0)}. \hfill \\
+            \end{aligned}} \right .
+\end{equation}
+Так как мы ищем $\tau_f$ наименьшее, то нужно отобрать наименьшее положительное $z>1$
 % Тогда из \eqref{findtau} получим
 % \begin{equation}\label{xyz}
 %     \footnotesize\left\{ {\begin{aligned}
