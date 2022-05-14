@@ -10,6 +10,7 @@
 %\renewcommand{\rmdefault}{ftm}
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+
 %% Номера формул
 %\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
 %\usepackage{leqno} % Нумерация формул слева
@@ -126,20 +127,27 @@
 \newpage
 
 \section{Введение}
-В ходе теста производят толкающее воздействие с помощью руки или
+Проба со ступенчатым воздействием является одной из стандартных проб
+при стабилометрических исследованиях. При проведении этой пробы
+обследуемый стоит на платформе стабилоанализатора перед экраном, на
+котором изображена мишень и отображается движение центра давления
+человека, определяемое по показаниям стабилоанализатора.
+
+В ходе теста производят толкающее воздействие на человека с помощью руки или
 груза, помещенного на подвижном отвесе. В результате внешнего
-воздействия тело наклоняется вперед и при не очень сильном толчке
-человек не теряет равновесие и не падает, а возвращается в исходное
+воздействия тело человека наклоняется вперед и при не очень сильном толчке
+он не теряет равновесие и не падает, а возвращается в исходное
 положение за счет изменения угла в голеностопном суставе. Изменение
 остальных суставных углов может оказаться тоже не столь значительным.
 
-В курсовой работе предполагается рассмотреть возможные оптимальные
-алгоритмы управления изменением позы человека, основанные на модели
-«перевернутого маятника», которые можно было бы использовать для
-возвращения человека в исходную вертикальную позу. В дальнейшем
-такое решение предполагается использовать для оценки времени
-возвращения конкретного человека в вертикальную позу, сравнивая
-его с полученным эталонным значением.
+В курсовой работе предполагается рассмотреть возможные
+алгоритмы управления изменением позы человека, основанные на решении задачи
+оптимального быстродействия, которые можно было бы использовать для
+возвращения человека в исходную вертикальную позу. В качестве математической модели
+используется модель «перевернутого маятника». В дальнейшем
+такое решение предполагается использовать для оценки эффективности управления человеком
+при возвращении в вертикальную позу, путем сравнения
+времени реального процесса с полученным эталонным решением оптимальной задачи.
 \newpage
 \section{Математическая модель и постановка задачи управления}
 Для описания движения тела человека в сагиттальной плоскости используем традиционную модель перевернутого маятника (см. рисунок 1).
@@ -248,6 +256,7 @@
                  & \theta^{'} = \omega , \hfill   \\
                  & \omega^{'} = \theta+m , \hfill \\
                  & m^{'} = u . \hfill             \\
+                 & s^{'} = 1 . \hfill             \\
             \end{aligned}} \right.
 \end{equation}
 Проверим управляемость системы
@@ -277,25 +286,36 @@ $|u|<U_{max}$
 \[
     \theta(0)=1;\ \omega(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
 \]
-$\tau_f\to min$
+$J=s(\tau_f)\to min$
 
+Для решения задачи оптимального быстродействия будем использовать принцип максимума Понтрягина \cite{Specpract}:
+
+Если $\{y^0(\cdot),u^0(\cdot),[t_0,t_k]\} - $ оптимальный процесс, то существует нетривиальная пара $\{\lambda_0\geq0,\psi(\cdot)\}$
+такая, что
+\begin{itemize}
+    \item $ \mathop {\max }\limits_{u(t) \in \Omega}  H(\psi(t),y^0(t),u(t))=H(\psi(t),y^0(t),u^0(t))$
+          $\forall t \in T \subset [t_0,t_k];$
+    \item $\psi(t_k)+\lambda_0(\frac{\partial \varphi_0(y^0(t_k))}{\partial y})^T \perp M \text{ в точке } y^0(t_k);$
+    \item $H(t)=H(\psi(t),y^0(t),u^0(t))\equiv0 \text{ при } t \in [t_0,t_k].$
+\end{itemize}
 Запишем функцию Понтрягина
 \[
-    H(\Psi(t),y(t),u(t))=\psi_1\cdot\omega+\psi_2\cdot(\theta+m)+\psi_3\cdot u
+    H(\Psi(t),y(t),u(t))=\psi_1\cdot\omega+\psi_2\cdot(\theta+m)+\psi_3\cdot u+\psi_4
 \]
 Сопряженная система уравнений:
 \[
-    \dot{\psi}_i  =  - \frac{{\partial H}}{{\partial y_i }},\,\,i = 1, \ldots ,n
+    \psi^{'}_i  =  - \frac{{\partial H}}{{\partial y_i }},\,\,i = 1, \ldots ,n
 \]
 В данной задаче $y_1 = \theta, y_2 = \omega, y_3=m$, тогда сопряженная система примет вид
 \begin{equation} \label{7}
     \left\{ {\begin{aligned}
-                 & \dot \psi _1  =  - \frac{{\partial H}}{{\partial \theta}} = - \psi_2\hfill   \\
-                 & \dot \psi _2   =  - \frac{{\partial H}}{{\partial \omega }} = - \psi_1\hfill \\
-                 & \dot \psi _3   =  - \frac{{\partial H}}{{\partial m }} = - \psi_2 . \hfill   \\
+                 & \psi^{'}_1=  - \frac{{\partial H}}{{\partial \theta}} = - \psi_2\hfill  \\
+                 & \psi^{'}_2=  - \frac{{\partial H}}{{\partial \omega }} = - \psi_1\hfill \\
+                 & \psi^{'}_3=  - \frac{{\partial H}}{{\partial m }} = - \psi_2 \hfill     \\
+                 & \psi^{'}_4=- \frac{{\partial H}}{{\partial s }}= 0 \hfill               \\
             \end{aligned}} \right.
 \end{equation}
-При $\psi_3\equiv0$ следует, что $\psi_2\equiv0$ и $\psi_1\equiv0$, следовательно особого управления нет
+При $\psi_3\equiv0$ следует, что $\psi_2\equiv0$ и $\psi_1\equiv0$, из третьего условия ПМП следует, что и $\psi_4\equiv0$, следовательно особого управления нет.
 
 Тогда для условия максимизации функции Понтрягина
 \[
@@ -305,15 +325,17 @@ $\tau_f\to min$
         +U_{max}, & \text{при $\psi_3\geq0$}
     \end{cases}
 \]\\*
-Решая систему \eqref{7}, получим
+Продифференцируем по безразмерному времени второе уравнение из \eqref{7} и подставим в него первое, получим
 \[
-    \psi^{''}_2=\psi_2
+    \psi{''}_2=\psi_2
 \]
+Решая систему \eqref{7}, получим
 \begin{equation}\label{psisystem}
     \left\{ {\begin{aligned}
                  & \psi_1 = -C_1e^\tau+C_2e^{-\tau}+C_3, \hfill  \\
                  & \psi_2 = C_1e^\tau+C_2e^{-\tau} , \hfill      \\
-                 & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 . \hfill \\
+                 & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 , \hfill \\
+                 & \psi_4 = -C_4 . \hfill                        \\
             \end{aligned}} \right.
 \end{equation}
 
@@ -348,6 +370,15 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
                  & \Omega_0 = C_1e^\tau-C_2e^{-\tau}-u_*  . \hfill \\
             \end{aligned}} \right.
 \end{equation}
+Тогда
+\begin{equation}\label{stage1Consts}
+    \left\{ {\begin{aligned}
+                 & C_0 = 0, \hfill                         \\
+                 & C_1 = \frac{u_*+1+\Omega_0}{2}, \hfill  \\
+                 & C_2 = \frac{u_*-1+\Omega_0}{2} . \hfill \\
+            \end{aligned}} \right.
+\end{equation}
+Подставим полученные константы в \eqref{solvekoshi}
 \begin{equation}\label{solvefull1stage}
     \left\{ {\begin{aligned}
                  & m_1(\tau) = u_*\tau, \hfill                                                                              \\
@@ -387,6 +418,7 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
                  & 0 = C_1e^\tau_f-C_2e^{-\tau_f}-u_*  . \hfill          \\
             \end{aligned}} \right.
 \end{equation}
+Тогда решение на этом этапе имеет вид
 \begin{equation}\label{final3stage}
     \left\{ {\begin{aligned}
                  & m_3(\tau) = -u_*\tau_f+u_*\tau, \hfill                                                    \\
@@ -403,29 +435,48 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
             \end{aligned}} \right.
 \end{equation}
 Получим
-\begin{equation}\label{findtau1}
-    \footnotesize\left\{ {\begin{aligned}
-                 & -u_*\tau_f+u_*\tau_2=2u_*\tau_1-u_*\tau_2, \hfill                                                                                                                                                                           \\
-                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2})-u_*(\tau_2-\tau_f) =\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(2\tau_1-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}-\tau_2), \hfill \\
-                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill                             \\
-            \end{aligned}} \right.
-\end{equation}
+\[
+    \left\{
+    \begin{multlined}
+        -u_*\tau_f+u_*\tau_2=2u_*\tau_1-u_*\tau_2, \\
+        % 2-nd equation
+        \shoveleft{ \frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(2\tau_1-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}-\tau_2)=} \\
+        \shoveright{=\frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2})-u_*(\tau_2-\tau_f),} \\
+        % 4-th equation
+        \shoveleft{\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2})=} \\
+        =\frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-u_*.
+    \end{multlined}
+    \right.
+\]
+
 Сократим первое уравнение на $u_*$, выражение для $\tau_f$ из первого уравнения подставим во второе и третье
-\begin{equation}\label{findtau2}
-    \footnotesize\left\{ {\begin{aligned}
-                 & \tau_f=2(\tau_2-\tau_1), \hfill                                                                                                                                                                                         \\
-                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2})+u_*(\tau_f+2(\tau_1-\tau_2)) =\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}), \hfill \\
-                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-2u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill                         \\
-            \end{aligned}} \right.
-\end{equation}
+\[
+    \left\{
+    \begin{multlined}
+        \tau_f=2(\tau_2-\tau_1), \\
+        % 2-nd equation
+        \shoveleft{\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2})=} \\
+        \shoveright{=\frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2})+u_*(\tau_f+2(\tau_1-\tau_2))} \\
+        % 4-th equation
+        \shoveleft{\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2})=} \\
+        =\frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-2u_*.
+    \end{multlined}
+    \right.
+\]
 Слагаемое $u_*(\tau_f+2(\tau_1-\tau_2))$ обнуляется
-\begin{equation}\label{findtau3}
-    \footnotesize\left\{ {\begin{aligned}
-                 & \tau_f=2(\tau_2-\tau_1), \hfill                                                                                                                                                                 \\
-                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2}) =\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}), \hfill      \\
-                 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-2u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill \\
-            \end{aligned}} \right.
-\end{equation}
+\[
+    \left\{
+    \begin{multlined}
+        \tau_f=2(\tau_2-\tau_1), \\
+        % 2-nd equation
+        \shoveleft{\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2})=} \\
+        \shoveright{=\frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2}),} \\
+        % 4-th equation
+        \shoveleft{\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2})=} \\
+        =\frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-2u_*.
+    \end{multlined}
+    \right.
+\]
 Введем замену переменных
 \[
     x=e^{\tau_1} ,\,\,y=e^{\tau_2} ,\,\,z=e^{\frac{\tau_f}{2}}
@@ -437,6 +488,7 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
                  & \frac{u_*}{2}\big(\frac{y}{z^2}+\frac{z^2}{y}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}+\frac{x}{y}). \hfill \\
             \end{aligned}} \right.
 \end{equation}
+Преобразуем систему к виду
 \begin{equation}\label{ytozx}
     \left\{ {\begin{aligned}
                  & y=zx, \hfill                                                                                                                                                      \\
@@ -459,7 +511,11 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
                  & u_*\frac{x}{z}-2u_*=\frac{u_*+\Omega_0+1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0+1}{2}(x+\frac{1}{x})-2u_*z. \hfill          \\
             \end{aligned}} \right.
 \end{equation}
-Решая систему \eqref{ytozx3}, получим
+Выразим из второго уравнения переменную $x$
+\[
+    x=\frac{z(-1+u-uz+\Omega_0)}{2u(1+z)}
+\]
+И подставим в третье, получим
 \begin{equation}\label{fullquadratic1}
     \footnotesize
     \left\{ {\begin{aligned}
@@ -475,7 +531,8 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
                  & x=\frac{-5-8u_*(2+3u_*)+10u_*\Omega_0+5\Omega_0^2+3\sqrt{1+32u_*^3(1+2u_*)-4u_*\Omega_0+2(2u_*^2-1)\Omega_0^2+4u_*\Omega_0^3+\Omega_0^4}}{4(1+2u_*+\Omega_0)(1+5u_*+\Omega_0)}. \hfill \\
             \end{aligned}} \right .
 \end{equation}
-Так как мы ищем $\tau_f$ наименьшее, то нужно отобрать наименьшее положительное $z>1$
+Так как мы ищем $\tau_f$ наименьшее, то нужно отобрать наименьшее положительное $z>1$.
+Таким условиям удовлетворяет система \eqref{fullquadratic1}.
 % Тогда из \eqref{findtau} получим
 % \begin{equation}\label{xyz}
 %     \footnotesize\left\{ {\begin{aligned}
@@ -484,4 +541,26 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
 %                  & 2z=\frac{y^2}{x^2}. \hfill \\
 %             \end{aligned}} \right.
 % \end{equation}
+\section{Сравнение с экспериментальными данными}
+Построим оптимальную траекторию, учитывая полученные соотношения для управления.
+
+$m_T=74$кг; $l=0.88$м; $J=\frac{4ml^2}{3}$кг$\cdot$м$^2$
+\[
+    t_\ast=\sqrt{\frac{J}{m_Tgl}}=\sqrt{\frac{4l}{3g}}=0.346c
+\]
+$U_{max}=35\text{н$\cdot$м/с$^2$}$; $\omega_0=\frac{2\pi}{9}$; $\varphi_\ast=\frac{\pi}{9}; \Omega_0=\frac{t_*}{\varphi_*}\omega_0=0.692$
+\[
+    u^*=1.65
+\]
+$z=0.979371$
+\newpage
+\section{Заключение}
+В данной работе была рассмотрена задача оптимального
+\newpage
+\addcontentsline{toc}{section}{Список используемой литературы}
+\begin{thebibliography}{15}
+    \bibitem{Specpract} Александров В.В. Спецпрактикум по теоретической и прикладной
+    механике, Издательство Московского университета, 2009, 234 с.
+    \bibitem{Optimal} Понтрягин Л.С., Болтянский В.Г., Гамкрелидзе Р.В., Мищенко Е.Ф. Математическая теория оптимальных процессов. Москва, Наука, 1983, 393 с.
+\end{thebibliography}
 \end{document}
