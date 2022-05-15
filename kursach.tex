@@ -193,19 +193,19 @@
 
 Запишем уравнение моментов для малых значений угла $\varphi$ и
 скорости его изменения запишем, как традиционно принято для этой задачи.
-\begin{equation}\label{6}
+\[
     J\ddot{\varphi}= m_Tgl\varphi+M
-\end{equation}
+\]
 
 Необходимо перевести решение уравнения из начального положения
-\begin{equation}\label{7}
+\[
     \varphi(0)=\varphi_0, \,\dot{\varphi}(0)=\omega_0
-\end{equation}
+\]
 
 в конечное положение
-\begin{equation}\label{8}
+\[
     \varphi(t_k)=\varphi_k,\, \dot{\varphi}(t_k)=0.
-\end{equation}
+\]
 
 Перевод положения тела должен происходить за минимальное
 время $t_k$, с помощью изменений значения момента $M$ в
@@ -244,20 +244,20 @@
 Управлением $u$ будем считать скорость изменения безразмерного
 момента. Для этих переменных обезразмеренные уравнения движения
 примут следующий вид
-\[
+\begin{equation}\label{system}
     \theta^{''}=\theta+m;\ m^{'}=u
-\]
+\end{equation}
 
 Здесь через $m^{'}$ обозначено дифференцирование по
-безразмерному времени $\tau$. Необходимо решение системы
+безразмерному времени $\tau$. Необходимо решение системы \eqref{system}
 перевести из начального положения
-\begin{equation}\label{9}
+\[
     \theta(0)=1;\ \dot{\theta}(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
-\end{equation}
+\]
 в положение
-\begin{equation}\label{9}
+\[
     \theta(\tau_f)=0;\ \dot{\theta}(\tau_f)=0;\ m(\tau_f)=0
-\end{equation}
+\]
 с помощью ограниченного управления
 \[
     u^-\le\ u\le\ u^+,\ \text{где}
@@ -277,7 +277,7 @@
                  & s^{'} = 1 . \hfill             \\
             \end{aligned}} \right.
 \end{equation}
-Проверим управляемость системы
+Проверим управляемость системы \eqref{koshisystem}
 \begin{equation*}
     A =
     \begin{pmatrix}
@@ -304,7 +304,7 @@ $|u|<U_{max}$
 \[
     \theta(0)=1;\ \omega(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
 \]
-$J=s(\tau_f)\to min$
+$J=-s(\tau_f)\to max$
 
 Для решения задачи оптимального быстродействия будем использовать принцип максимума Понтрягина \cite{Specpract}:
 
@@ -348,14 +348,14 @@ $J=s(\tau_f)\to min$
     \psi{''}_2=\psi_2
 \]
 Решая систему \eqref{7}, получим
-\begin{equation}\label{psisystem}
+\[
     \left\{ {\begin{aligned}
                  & \psi_1 = -C_1e^\tau+C_2e^{-\tau}+C_3, \hfill  \\
                  & \psi_2 = C_1e^\tau+C_2e^{-\tau} , \hfill      \\
                  & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 , \hfill \\
                  & \psi_4 = -C_4 . \hfill                        \\
             \end{aligned}} \right.
-\end{equation}
+\]
 
 Анализируя корни уравнения $\psi_3(\tau)=0$, для различной комбинации
 коэффициентов $C_1,C_2,C_3$, получим, что число корней не может быть больше двух. В системе может быть не более двух переключений $u$.
@@ -381,77 +381,77 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
 \]
 
 Из \eqref{solvekoshi} получим
-\begin{equation}\label{stage11}
+\[
     \left\{ {\begin{aligned}
                  & 0 = C_0, \hfill                                 \\
                  & 1 = C_1e^\tau+C_2e^{-\tau}-C_0 , \hfill         \\
                  & \Omega_0 = C_1e^\tau-C_2e^{-\tau}-u_*  . \hfill \\
             \end{aligned}} \right.
-\end{equation}
+\]
 Тогда
-\begin{equation}\label{stage1Consts}
+\[
     \left\{ {\begin{aligned}
                  & C_0 = 0, \hfill                         \\
                  & C_1 = \frac{u_*+1+\Omega_0}{2}, \hfill  \\
                  & C_2 = \frac{u_*-1+\Omega_0}{2} . \hfill \\
             \end{aligned}} \right.
-\end{equation}
+\]
 Подставим полученные константы в \eqref{solvekoshi}
-\begin{equation}\label{solvefull1stage}
+\[
     \left\{ {\begin{aligned}
                  & m_1(\tau) = u_*\tau, \hfill                                                                              \\
                  & \theta_1(\tau) = \frac{u_*+\Omega_0}{2}(e^\tau-e^{-\tau})+\frac{1}{2}(e^\tau+e^{-\tau})-u_*\tau , \hfill \\
                  & \omega_1(\tau) = \frac{1}{2}(e^\tau-e^{-\tau})+\frac{u_*+\Omega_0}{2}(e^\tau+e^{-\tau})-u_*  . \hfill    \\
             \end{aligned}} \right.
-\end{equation}
+\]
 Этап 2. $u=-u_*$ начальные условия
 \[
     \theta(\tau_1)=\theta_1(\tau_1);\ \omega(\tau_1)=\omega_1(\tau_1);\ m(\tau_1)=m_1(\tau_1)
 \]
-\begin{equation}\label{basecond2stage}
+\[
     \left\{ {\begin{aligned}
                  & m(\tau_1) = u_*\tau_1, \hfill                                                                                          \\
                  & \theta(\tau_1) = \frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*\tau_1 , \hfill \\
                  & \omega(\tau_1) = \frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})-u_*  . \hfill      \\
             \end{aligned}} \right.
-\end{equation}
+\]
 Подставим начальные условия для второго этапа в \eqref{solvekoshi}, получим
 
-\begin{equation}\label{final2stage}
+\[
     \left\{ {\begin{aligned}
                  & m_2(\tau) = 2u_*\tau_1-u\tau, \hfill                                                                                                                            \\
                  & \theta_2(\tau) = \frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(2\tau_1-e^{\tau_1-\tau}+e^{-\tau_1+\tau}-\tau) , \hfill \\
                  & \omega_2(\tau) = \frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau}-e^{-\tau_1+\tau})  . \hfill           \\
             \end{aligned}} \right.
-\end{equation}
+\]
 Этап 3. $u=u_*$ конечные условия
 \[
     \theta(\tau_f)=0;\ \omega(\tau_f)=0;\ m(\tau_f)=0
 \]
 Подставим начальные условия в \eqref{solvekoshi}, получим
-\begin{equation}\label{stage31}
+\[
     \left\{ {\begin{aligned}
                  & 0 = u_*\tau_f+C_0, \hfill                             \\
                  & 0 = C_1e^\tau_f+C_2e^{-\tau_f}-C_0-u_*\tau_f , \hfill \\
                  & 0 = C_1e^\tau_f-C_2e^{-\tau_f}-u_*  . \hfill          \\
             \end{aligned}} \right.
-\end{equation}
+\]
 Тогда решение на этом этапе имеет вид
-\begin{equation}\label{final3stage}
-    \left\{ {\begin{aligned}
-                 & m_3(\tau) = -u_*\tau_f+u_*\tau, \hfill                                                    \\
-                 & \theta_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}-e^{\tau_f-\tau})-u_*(\tau-\tau_f), \hfill \\
-                 & \omega_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}+e^{\tau_f-\tau})-u_*  . \hfill            \\
-            \end{aligned}} \right.
-\end{equation}
+\[
+\left\{ {\begin{aligned}
+             & m_3(\tau) = -u_*\tau_f+u_*\tau, \hfill                                                    \\
+             & \theta_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}-e^{\tau_f-\tau})-u_*(\tau-\tau_f), \hfill \\
+             & \omega_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}+e^{\tau_f-\tau})-u_*  . \hfill            \\
+        \end{aligned}} \right.
+\]
 Теперь найдем решения, учитывая что
-\begin{equation}\label{T2equalT3}
+\[
     \left\{ {\begin{aligned}
                  & m_2(\tau_2) = m_3(\tau_2), \hfill            \\
                  & \theta_2(\tau_2) =  \theta_3(\tau_2), \hfill \\
                  & \omega_2(\tau_2) = \omega_3(\tau_2) . \hfill \\
             \end{aligned}} \right.
-\end{equation}
+\]
 Получим
 \[
     \left\{
@@ -499,21 +499,21 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
 \[
     x=e^{\tau_1} ,\,\,y=e^{\tau_2} ,\,\,z=e^{\frac{\tau_f}{2}}
 \]
-\begin{equation}\label{findtau3}
+\[
     \left\{ {\begin{aligned}
                  & z=\frac{y}{x}, \hfill                                                                                                                                         \\
                  & \frac{u_*}{2}\big(\frac{y}{z^2}-\frac{z^2}{y}\big)=\frac{u_*+\Omega_0}{2}(x-\frac{1}{x})+\frac{1}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}-\frac{x}{y}), \hfill      \\
                  & \frac{u_*}{2}\big(\frac{y}{z^2}+\frac{z^2}{y}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}+\frac{x}{y}). \hfill \\
             \end{aligned}} \right.
-\end{equation}
+\]
 Преобразуем систему к виду
-\begin{equation}\label{ytozx}
+\[
     \left\{ {\begin{aligned}
                  & y=zx, \hfill                                                                                                                                                      \\
                  & \frac{u_*}{2}\big(\frac{zx}{z^2}-\frac{z^2}{zx}\big)=\frac{u_*+\Omega_0}{2}(x-\frac{1}{x})+\frac{1}{2}(x+\frac{1}{x})-u_*(\frac{zx}{x}-\frac{x}{zx}), \hfill      \\
                  & \frac{u_*}{2}\big(\frac{zx}{z^2}+\frac{z^2}{zx}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(\frac{zx}{x}+\frac{x}{zx}). \hfill \\
             \end{aligned}} \right.
-\end{equation}
+\]
 \begin{equation}\label{ytozx2}
     \left\{ {\begin{aligned}
                  & y=zx, \hfill                                                                                                                                    \\
@@ -522,25 +522,25 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
             \end{aligned}} \right.
 \end{equation}
 Сложим и вычтем 2 и 3 уравнения из \eqref{ytozx2}, получим
-\begin{equation}\label{ytozx3}
+\[
     \left\{ {\begin{aligned}
                  & y=zx, \hfill                                                                                                               \\
                  & u_*\frac{z}{x}+2u_*=\frac{1-u_*-\Omega_0}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0-1}{2}(x+\frac{1}{x})-2\frac{u_*}{z}, \hfill \\
                  & u_*\frac{x}{z}-2u_*=\frac{u_*+\Omega_0+1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0+1}{2}(x+\frac{1}{x})-2u_*z. \hfill          \\
             \end{aligned}} \right.
-\end{equation}
+\]
 Выразим из второго уравнения переменную $x$
 \[
     x=\frac{z(-1+u-uz+\Omega_0)}{2u(1+z)}
 \]
 И подставим в третье, получим
-\begin{equation}\label{fullquadratic1}
+\[
     \footnotesize
     \left\{ {\begin{aligned}
                  & z=\frac{-1+2u_*^2+2u_*\Omega_0+\Omega_0^2-\sqrt{32u_*^3+64u_*^4+4u_*^2\Omega_0^2+4u_*\Omega_0(\Omega_0^2-1)+(\Omega_0^2-1)^2}}{2u_*(1+5u_*+\Omega_0)}, \hfill                          \\
                  & x=\frac{-5-8u_*(2+3u_*)+10u_*\Omega_0+5\Omega_0^2-3\sqrt{1+32u_*^3(1+2u_*)-4u_*\Omega_0+2(2u_*^2-1)\Omega_0^2+4u_*\Omega_0^3+\Omega_0^4}}{4(1+2u_*+\Omega_0)(1+5u_*+\Omega_0)}. \hfill \\
             \end{aligned}} \right .
-\end{equation}
+\]
 или
 \begin{equation}\label{fullquadratic2}
     \footnotesize
@@ -550,7 +550,7 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
             \end{aligned}} \right .
 \end{equation}
 Так как мы ищем $\tau_f$ наименьшее, то нужно отобрать наименьшее положительное $z>1$.
-Таким условиям удовлетворяет система \eqref{fullquadratic1}.
+Таким условиям удовлетворяет система \eqref{fullquadratic2}.
 % Тогда из \eqref{findtau} получим
 % \begin{equation}\label{xyz}
 %     \footnotesize\left\{ {\begin{aligned}
@@ -568,7 +568,7 @@ $m_T=74$кг; $l=0.88$м; $J=\frac{4ml^2}{3}$кг$\cdot$м$^2$
 \]
 $U_{max}=35\text{н$\cdot$м/с$^2$}$; $\omega_0=\frac{2\pi}{9}$; $\varphi_\ast=\frac{\pi}{9}; \Omega_0=\frac{t_*}{\varphi_*}\omega_0=0.692$
 \[
-    u^*=1.65
+    u^*_{max}=1.65
 \]
 $z=0.979371$
 \newpage
