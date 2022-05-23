@@ -274,7 +274,6 @@
                  & \theta^{'} = \omega , \hfill   \\
                  & \omega^{'} = \theta+m , \hfill \\
                  & m^{'} = u . \hfill             \\
-                 & s^{'} = 1 . \hfill             \\
             \end{aligned}} \right.
 \end{equation}
 Проверим управляемость системы \eqref{koshisystem}
@@ -304,7 +303,7 @@ $|u|<U_{max}$
 \[
     \theta(0)=1;\ \omega(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
 \]
-$J=-s(\tau_f)\to max$
+$J=\tau_f\to min$
 
 Для решения задачи оптимального быстродействия будем использовать принцип максимума Понтрягина \cite{Specpract}:
 
@@ -318,7 +317,7 @@ $J=-s(\tau_f)\to max$
 \end{itemize}
 Запишем функцию Понтрягина
 \[
-    H(\Psi(t),y(t),u(t))=\psi_1\cdot\omega+\psi_2\cdot(\theta+m)+\psi_3\cdot u+\psi_4
+    H(\Psi(t),y(t),u(t))=\psi_1\cdot\omega+\psi_2\cdot(\theta+m)+\psi_3\cdot u
 \]
 Сопряженная система уравнений:
 \[
@@ -330,10 +329,9 @@ $J=-s(\tau_f)\to max$
                  & \psi^{'}_1=  - \frac{{\partial H}}{{\partial \theta}} = - \psi_2\hfill  \\
                  & \psi^{'}_2=  - \frac{{\partial H}}{{\partial \omega }} = - \psi_1\hfill \\
                  & \psi^{'}_3=  - \frac{{\partial H}}{{\partial m }} = - \psi_2 \hfill     \\
-                 & \psi^{'}_4=- \frac{{\partial H}}{{\partial s }}= 0 \hfill               \\
             \end{aligned}} \right.
 \end{equation}
-При $\psi_3\equiv0$ следует, что $\psi_2\equiv0$ и $\psi_1\equiv0$, из третьего условия ПМП следует, что и $\psi_4\equiv0$, следовательно особого управления нет.
+При $\psi_3\equiv0$ следует, что $\psi_2\equiv0$ и $\psi_1\equiv0$ следовательно особого управления нет.
 
 Тогда для условия максимизации функции Понтрягина
 \[
@@ -352,8 +350,7 @@ $J=-s(\tau_f)\to max$
     \left\{ {\begin{aligned}
                  & \psi_1 = -C_1e^\tau+C_2e^{-\tau}+C_3, \hfill  \\
                  & \psi_2 = C_1e^\tau+C_2e^{-\tau} , \hfill      \\
-                 & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 , \hfill \\
-                 & \psi_4 = -C_4 . \hfill                        \\
+                 & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 . \hfill \\
             \end{aligned}} \right.
 \]
 
@@ -438,11 +435,11 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
 \]
 Тогда решение на этом этапе имеет вид
 \[
-\left\{ {\begin{aligned}
-             & m_3(\tau) = -u_*\tau_f+u_*\tau, \hfill                                                    \\
-             & \theta_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}-e^{\tau_f-\tau})-u_*(\tau-\tau_f), \hfill \\
-             & \omega_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}+e^{\tau_f-\tau})-u_*  . \hfill            \\
-        \end{aligned}} \right.
+    \left\{ {\begin{aligned}
+                 & m_3(\tau) = -u_*\tau_f+u_*\tau, \hfill                                                    \\
+                 & \theta_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}-e^{\tau_f-\tau})-u_*(\tau-\tau_f), \hfill \\
+                 & \omega_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}+e^{\tau_f-\tau})-u_*  . \hfill            \\
+            \end{aligned}} \right.
 \]
 Теперь найдем решения, учитывая что
 \[
@@ -458,10 +455,10 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
     \begin{multlined}
         -u_*\tau_f+u_*\tau_2=2u_*\tau_1-u_*\tau_2, \\
         % 2-nd equation
-        \shoveleft{ \frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(2\tau_1-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}-\tau_2)=} \\
-        \shoveright{=\frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2})-u_*(\tau_2-\tau_f),} \\
+        \shoveleft{ \frac{\Omega_0-u_*}{2}(e^{\tau_2}-e^{-\tau_2})+\frac{1}{2}(e^{\tau_2}+e^{-\tau_2})+u_*(2\tau_1-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}-\tau_2)=} \\
+        \shoveright{=\frac{u_*}{2}(-e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})+u_*(\tau_2-\tau_f),} \\
         % 4-th equation
-        \shoveleft{\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2})=} \\
+        \shoveleft{\frac{1}{2}(e^{\tau_2}-e^{-\tau_2})+\frac{\Omega_0-u_*}{2}(e^{\tau_2}+e^{-\tau_2})+u_*(-1+e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2})=} \\
         =\frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-u_*.
     \end{multlined}
     \right.
@@ -482,7 +479,8 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
     \right.
 \]
 Слагаемое $u_*(\tau_f+2(\tau_1-\tau_2))$ обнуляется
-\[
+
+\begin{equation}\label{fullconnected}
     \left\{
     \begin{multlined}
         \tau_f=2(\tau_2-\tau_1), \\
@@ -494,86 +492,62 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
         =\frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-2u_*.
     \end{multlined}
     \right.
-\]
+\end{equation}
 Введем замену переменных
 \[
     x=e^{\tau_1} ,\,\,y=e^{\tau_2} ,\,\,z=e^{\frac{\tau_f}{2}}
 \]
 \[
     \left\{ {\begin{aligned}
-                 & z=\frac{y}{x}, \hfill                                                                                                                                         \\
-                 & \frac{u_*}{2}\big(\frac{y}{z^2}-\frac{z^2}{y}\big)=\frac{u_*+\Omega_0}{2}(x-\frac{1}{x})+\frac{1}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}-\frac{x}{y}), \hfill      \\
-                 & \frac{u_*}{2}\big(\frac{y}{z^2}+\frac{z^2}{y}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}+\frac{x}{y}). \hfill \\
+                 & z=\frac{y}{x}, \hfill                                                         \\
+                 & \frac{1}{2} \left(u_* \left(\frac{x^2}{y}-\frac{y}{x^2}-\frac{2 x}{y}+\frac{2
+                        y}{x}-y+\frac{1}{y}\right)+\left(y-\frac{1}{y}\right) \Omega
+                _0+y+\frac{1}{y}\right)=0, \hfill                                                \\
+                 & \frac{u_* \left(\frac{y^2}{x^2}+x^2+\frac{2 y^2}{x}+2 x-y^2-4
+                y-1\right)+\left(y^2+1\right) \Omega _0+y^2-1}{2 y}=0. \hfill                    \\
             \end{aligned}} \right.
 \]
 Преобразуем систему к виду
-\[
-    \left\{ {\begin{aligned}
-                 & y=zx, \hfill                                                                                                                                                      \\
-                 & \frac{u_*}{2}\big(\frac{zx}{z^2}-\frac{z^2}{zx}\big)=\frac{u_*+\Omega_0}{2}(x-\frac{1}{x})+\frac{1}{2}(x+\frac{1}{x})-u_*(\frac{zx}{x}-\frac{x}{zx}), \hfill      \\
-                 & \frac{u_*}{2}\big(\frac{zx}{z^2}+\frac{z^2}{zx}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(\frac{zx}{x}+\frac{x}{zx}). \hfill \\
-            \end{aligned}} \right.
-\]
-\begin{equation}\label{ytozx2}
-    \left\{ {\begin{aligned}
-                 & y=zx, \hfill                                                                                                                                    \\
-                 & \frac{u_*}{2}\big(\frac{x}{z}-\frac{z}{x}\big)=\frac{u_*+\Omega_0}{2}(x-\frac{1}{x})+\frac{1}{2}(x+\frac{1}{x})-u_*(z-\frac{1}{z}), \hfill      \\
-                 & \frac{u_*}{2}\big(\frac{x}{z}+\frac{z}{x}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(z+\frac{1}{z}). \hfill \\
-            \end{aligned}} \right.
-\end{equation}
-Сложим и вычтем 2 и 3 уравнения из \eqref{ytozx2}, получим
-\[
-    \left\{ {\begin{aligned}
-                 & y=zx, \hfill                                                                                                               \\
-                 & u_*\frac{z}{x}+2u_*=\frac{1-u_*-\Omega_0}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0-1}{2}(x+\frac{1}{x})-2\frac{u_*}{z}, \hfill \\
-                 & u_*\frac{x}{z}-2u_*=\frac{u_*+\Omega_0+1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0+1}{2}(x+\frac{1}{x})-2u_*z. \hfill          \\
-            \end{aligned}} \right.
-\]
-Выразим из второго уравнения переменную $x$
-\[
-    x=\frac{z(-1+u-uz+\Omega_0)}{2u(1+z)}
-\]
-И подставим в третье, получим
-\[
-    \footnotesize
-    \left\{ {\begin{aligned}
-                 & z=\frac{-1+2u_*^2+2u_*\Omega_0+\Omega_0^2-\sqrt{32u_*^3+64u_*^4+4u_*^2\Omega_0^2+4u_*\Omega_0(\Omega_0^2-1)+(\Omega_0^2-1)^2}}{2u_*(1+5u_*+\Omega_0)}, \hfill                          \\
-                 & x=\frac{-5-8u_*(2+3u_*)+10u_*\Omega_0+5\Omega_0^2-3\sqrt{1+32u_*^3(1+2u_*)-4u_*\Omega_0+2(2u_*^2-1)\Omega_0^2+4u_*\Omega_0^3+\Omega_0^4}}{4(1+2u_*+\Omega_0)(1+5u_*+\Omega_0)}. \hfill \\
-            \end{aligned}} \right .
-\]
-или
-\begin{equation}\label{fullquadratic2}
-    \footnotesize
-    \left\{ {\begin{aligned}
-                 & z=\frac{-1+2u_*^2+2u_*\Omega_0+\Omega_0^2+\sqrt{32u_*^3+64u_*^4+4u_*^2\Omega_0^2+4u_*\Omega_0(\Omega_0^2-1)+(\Omega_0^2-1)^2}}{2u_*(1+5u_*+\Omega_0)}, \hfill                          \\
-                 & x=\frac{-5-8u_*(2+3u_*)+10u_*\Omega_0+5\Omega_0^2+3\sqrt{1+32u_*^3(1+2u_*)-4u_*\Omega_0+2(2u_*^2-1)\Omega_0^2+4u_*\Omega_0^3+\Omega_0^4}}{4(1+2u_*+\Omega_0)(1+5u_*+\Omega_0)}. \hfill \\
-            \end{aligned}} \right .
-\end{equation}
-Так как мы ищем $\tau_f$ наименьшее, то нужно отобрать наименьшее положительное $z>1$.
-Таким условиям удовлетворяет система \eqref{fullquadratic2}.
-% Тогда из \eqref{findtau} получим
-% \begin{equation}\label{xyz}
-%     \footnotesize\left\{ {\begin{aligned}
-%                  & , \hfill              \\
-%                  & \hfill                \\
-%                  & 2z=\frac{y^2}{x^2}. \hfill \\
-%             \end{aligned}} \right.
-% \end{equation}
-\section{Сравнение с экспериментальными данными}
+
+
+\section{Численные примеры реализации оптимального управления}
 Построим оптимальную траекторию, учитывая полученные соотношения для управления.
 
 $m_T=74$кг; $l=0.88$м; $J=\frac{4ml^2}{3}$кг$\cdot$м$^2$
 \[
     t_\ast=\sqrt{\frac{J}{m_Tgl}}=\sqrt{\frac{4l}{3g}}=0.346c
 \]
-$U_{max}=35\text{н$\cdot$м/с$^2$}$; $\omega_0=\frac{2\pi}{9}$; $\varphi_\ast=\frac{\pi}{9}; \Omega_0=\frac{t_*}{\varphi_*}\omega_0=0.692$
-\[
-    u^*_{max}=1.65
-\]
-$z=0.979371$
+$dt=0.2;$
+$u^*_{max}=1.65$
+$\Omega_0=\frac{t_\ast}{\varphi_\ast}\omega_0=\frac{-t_\ast\cdot\varphi_\ast}{\varphi_\ast\cdot dt}=\frac{t_\ast}{dt}=-1.38$
+
+Численно решим систему \eqref{fullconnected} используя пакет Methematica,
+получим $\tau_1=0.079;\tau_2=0.907;\tau_f=1.654.$
+
+Для полученных значений $\tau_1,\tau_2,\tau_f$ построим графики решений системы \eqref{koshisystem}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{m_from_t.jpeg}
+    \caption{Зависимость $m[\tau]$}
+    \label{fig:m}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{theta_from_t.jpeg}
+    \caption{Зависимость $\Theta[\tau]$}
+    \label{fig:theta}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{oemga_from_t.jpeg}
+    \caption{Зависимость $\omega[\tau]$}
+    \label{fig:omega}
+\end{figure}
+
 \newpage
 \section{Заключение}
-В данной работе была рассмотрена задача оптимального
+В данной работе была рассмотрена задача оптимального управления аналитиического решения не получилось, но есть численное.
 \newpage
 \addcontentsline{toc}{section}{Список используемой литературы}
 \begin{thebibliography}{15}
