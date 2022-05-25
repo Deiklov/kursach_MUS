@@ -362,9 +362,11 @@ $J=\tau_f\to min$
 Решая систему \eqref{koshisystem}, получим
 \begin{equation}\label{solvekoshi}
     \left\{ {\begin{aligned}
-                 & m(\tau) = u_*\tau+C_0, \hfill                              \\
-                 & \theta(\tau) = C_1e^\tau+C_2e^{-\tau}-C_0-u_*\tau , \hfill \\
-                 & \omega(\tau) = C_1e^\tau-C_2e^{-\tau}-u_*  . \hfill        \\
+                 & m(\tau) = \tau u+C_1, \hfill                                                            \\
+                 & \theta(\tau) = \frac{1}{2} e^{-\tau } \left((C_1+C_2+C_3) e^{2 \tau }-2 e^{\tau } (\tau
+                u+C_1)+C_1+C_2-C_3\right), \hfill                                                          \\
+                 & \omega(\tau) = \frac{1}{2} e^{-\tau } \left((C_1+C_2+C_3) e^{2 \tau }-2 e^{\tau }
+                u-C_1-C_2+C_3\right). \hfill                                                               \\
             \end{aligned}} \right.
 \end{equation}
 Пусть первое переключение управления происходит в момент времени
@@ -372,73 +374,122 @@ $\tau=\tau_1$, а второе в момент времени
 $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на трех этапах,
 при переходе между которыми меняется управление.
 
-Этап 1. $u=u_*$ начальные условия
+Этап 1. $u=-u_*$ начальные условия
 \[
-    \theta(0)=1;\ \omega(0)=\Omega_0;\ m(0)=0
+    m(0)=0;\ \theta(0)=1;\ \omega(0)=\Omega_0;
 \]
 
 Из \eqref{solvekoshi} получим
 \[
     \left\{ {\begin{aligned}
-                 & 0 = C_0, \hfill                                 \\
-                 & 1 = C_1e^\tau+C_2e^{-\tau}-C_0 , \hfill         \\
-                 & \Omega_0 = C_1e^\tau-C_2e^{-\tau}-u_*  . \hfill \\
+                 & 0 = -\tau  u_*+c_1, \hfill                                                            \\
+                 & 1 = \frac{1}{2} e^{-\tau } \left(C_1 \left(e^{\tau }-1\right)^2+C_2 \left(e^{2
+                \tau }+1\right)+C_3 e^{2 \tau }-C_3+2 e^{\tau } \tau  u_*\right) , \hfill                \\
+                 & \Omega_0 = \frac{1}{2} e^{-\tau } \left(C_1 \left(e^{2 \tau }-1\right)+C_2 \left(e^{2
+                \tau }-1\right)+C_3 e^{2 \tau }+C_3+2 e^{\tau } u_*\right)  . \hfill                     \\
             \end{aligned}} \right.
 \]
 Тогда
 \[
     \left\{ {\begin{aligned}
-                 & C_0 = 0, \hfill                         \\
-                 & C_1 = \frac{u_*+1+\Omega_0}{2}, \hfill  \\
-                 & C_2 = \frac{u_*-1+\Omega_0}{2} . \hfill \\
+                 & C_1 = 0, \hfill             \\
+                 & C_2 = 1, \hfill             \\
+                 & C_3 = -u_*+\Omega_0. \hfill \\
             \end{aligned}} \right.
 \]
 Подставим полученные константы в \eqref{solvekoshi}
 \[
     \left\{ {\begin{aligned}
-                 & m_1(\tau) = u_*\tau, \hfill                                                                              \\
-                 & \theta_1(\tau) = \frac{u_*+\Omega_0}{2}(e^\tau-e^{-\tau})+\frac{1}{2}(e^\tau+e^{-\tau})-u_*\tau , \hfill \\
-                 & \omega_1(\tau) = \frac{1}{2}(e^\tau-e^{-\tau})+\frac{u_*+\Omega_0}{2}(e^\tau+e^{-\tau})-u_*  . \hfill    \\
+                 & m_1(\tau) = -\tau  u_*, \hfill                                                               \\
+                 & \theta(\tau_1) = \frac{1}{2} e^{-\tau } \left(\left(e^{2 \tau }-1\right) \Omega _0+e^{2 \tau
+                }+\left(2 e^{\tau } \tau -e^{2 \tau }+1\right) u_*+1\right) , \hfill                            \\
+                 & \omega(\tau_1) =\frac{1}{2} e^{-\tau } \left(\left(e^{2 \tau }+1\right) \Omega
+                _0-\left(e^{\tau }-1\right) \left(-e^{\tau }+\left(e^{\tau }-1\right)
+                u_*-1\right)\right)   . \hfill                                                                  \\
             \end{aligned}} \right.
 \]
-Этап 2. $u=-u_*$ начальные условия
+Этап 2. $u=u_*$ начальные условия
 \[
-    \theta(\tau_1)=\theta_1(\tau_1);\ \omega(\tau_1)=\omega_1(\tau_1);\ m(\tau_1)=m_1(\tau_1)
+    m(\tau_1)=m_1(\tau_1); \ \theta(\tau_1)=\theta_1(\tau_1);\ \omega(\tau_1)=\omega_1(\tau_1);
 \]
 \[
     \left\{ {\begin{aligned}
-                 & m(\tau_1) = u_*\tau_1, \hfill                                                                                          \\
-                 & \theta(\tau_1) = \frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*\tau_1 , \hfill \\
-                 & \omega(\tau_1) = \frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})-u_*  . \hfill      \\
+                 & m(\tau_1) = -\tau _1 u_*, \hfill                                                            \\
+                 & \theta(\tau_1) = \frac{1}{2} e^{-\tau _1} \left(\left(e^{2 \tau _1}-1\right) \Omega _0+e^{2
+                \tau _1}+\left(2 e^{\tau _1} \tau _1-e^{2 \tau _1}+1\right) u_*+1\right) , \hfill              \\
+                 & \omega(\tau_1) = \frac{1}{2} e^{-\tau _1} \left(\left(e^{2 \tau _1}+1\right) \Omega
+                _0-\left(e^{\tau _1}-1\right) \left(-e^{\tau _1}+\left(e^{\tau
+                _1}-1\right) u_*-1\right)\right) . \hfill                                                      \\
             \end{aligned}} \right.
 \]
+Находим константы
+\[
+    \left\{ {\begin{aligned}
+                 & -\tau _1 u_* = \tau _1 u_*+C_1, \hfill                                     \\
+                 & \frac{1}{2} e^{-\tau _1} \left(\left(e^{2 \tau _1}-1\right) \Omega _0+e^{2
+                    \tau _1}+\left(2 e^{\tau _1} \tau _1-e^{2 \tau _1}+1\right) u_*+1\right) = \frac{1}{2} e^{-\tau _1} \left(C_1 \left(e^{\tau _1}-1\right){}^2+C_2 e^{2
+                \tau _1}+C_3 e^{2 \tau _1}-2 e^{\tau _1} \tau _1 u_*+C_2-C_3\right) , \hfill  \\
+                 & \frac{1}{2} e^{-\tau _1} \left(\left(e^{2 \tau _1}+1\right) \Omega
+                _0-\left(e^{\tau _1}-1\right) \left(-e^{\tau _1}+\left(e^{\tau
+                        _1}-1\right) u_*-1\right)\right)=\frac{1}{2} e^{-\tau _1} \left(C_1 \left(e^{2 \tau _1}-1\right)+C_2 e^{2 \tau
+                _1}+C_3 e^{2 \tau _1}-2 e^{\tau _1} u_*-C_2+C_3\right)  . \hfill              \\
+            \end{aligned}} \right.
+\]
+\[
+    \left\{ {\begin{aligned}
+                 & C_1 =-2 \tau _1 u_*, \hfill                                                    \\
+                 & C_2 = -e^{-\tau _1} \left(-e^{\tau _1}+e^{2 \tau _1} u_*-2 e^{\tau _1} \tau _1
+                u_*-u_*\right), \hfill                                                            \\
+                 & C_3 = e^{-\tau _1} \left(e^{\tau _1} \Omega _0-e^{\tau _1} u_*+e^{2 \tau _1}
+                u_*+u_*\right). \hfill                                                            \\
+            \end{aligned}} \right.
+\]
+
 Подставим начальные условия для второго этапа в \eqref{solvekoshi}, получим
 
 \[
     \left\{ {\begin{aligned}
-                 & m_2(\tau) = 2u_*\tau_1-u\tau, \hfill                                                                                                                            \\
-                 & \theta_2(\tau) = \frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(2\tau_1-e^{\tau_1-\tau}+e^{-\tau_1+\tau}-\tau) , \hfill \\
-                 & \omega_2(\tau) = \frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau}-e^{-\tau_1+\tau})  . \hfill           \\
+                 & m_2(\tau) = \left(\tau -2 \tau _1\right) u_*, \hfill                                         \\
+                 & \theta_2(\tau) = \frac{1}{2} \left(\left(e^{\tau }-e^{-\tau }\right) \Omega _0+e^{-\tau
+                }+e^{\tau }+\left(-2 \tau +e^{-\tau }-e^{\tau }+2 e^{\tau -\tau _1}-2
+                e^{\tau _1-\tau }+4 \tau _1\right) u_*\right) , \hfill                                          \\
+                 & \omega_2(\tau) = \frac{1}{2} e^{-\tau -\tau _1} \left(e^{\tau _1} \left(e^{2 \tau }+1\right)
+                \Omega _0+e^{\tau _1} \left(e^{2 \tau }-1\right)-\left(-2 e^{2 \tau
+                }+e^{\tau _1}-2 e^{2 \tau _1}+2 e^{\tau +\tau _1}+e^{2 \tau +\tau
+                _1}\right) u_*\right) . \hfill                                                                  \\
             \end{aligned}} \right.
 \]
 Этап 3. $u=u_*$ конечные условия
 \[
-    \theta(\tau_f)=0;\ \omega(\tau_f)=0;\ m(\tau_f)=0
+    m(\tau_f)=0; \ \theta(\tau_f)=0;\ \omega(\tau_f)=0;
 \]
 Подставим начальные условия в \eqref{solvekoshi}, получим
 \[
     \left\{ {\begin{aligned}
-                 & 0 = u_*\tau_f+C_0, \hfill                             \\
-                 & 0 = C_1e^\tau_f+C_2e^{-\tau_f}-C_0-u_*\tau_f , \hfill \\
-                 & 0 = C_1e^\tau_f-C_2e^{-\tau_f}-u_*  . \hfill          \\
+                 & 0 = C_1-\tau_f  u_*, \hfill                                               \\
+                 & 0 = \frac{1}{2} e^{-\tau _f} \left(C_1 \left(e^{\tau _f}-1\right){}^2+C_2
+                \left(e^{2 \tau _f}+1\right)+C_3 e^{2 \tau _f}-C_3+2 u_* e^{\tau _f} \tau
+                _f\right), \hfill                                                            \\
+                 & 0 = \frac{1}{2} e^{-\tau _f} \left(C_1 \left(e^{2 \tau _f}-1\right)+C_2
+                \left(e^{2 \tau _f}-1\right)+C_3 e^{2 \tau _f}+C_3+2 u_* e^{\tau
+                _f}\right)  . \hfill                                                         \\
+            \end{aligned}} \right.
+\]
+\[
+    \left\{ {\begin{aligned}
+                 & C_1 = u_* \tau _f, \hfill                                                  \\
+                 & C_1 = \frac{1}{2} u_* e^{-\tau _f} \left(-2 e^{\tau _f} \tau _f+e^{2 \tau
+                _f}-1\right), \hfill                                                          \\
+                 & C_2 = -\frac{1}{2} u_* e^{-\tau _f} \left(e^{2 \tau _f}+1\right)  . \hfill \\
             \end{aligned}} \right.
 \]
 Тогда решение на этом этапе имеет вид
 \[
     \left\{ {\begin{aligned}
-                 & m_3(\tau) = -u_*\tau_f+u_*\tau, \hfill                                                    \\
-                 & \theta_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}-e^{\tau_f-\tau})-u_*(\tau-\tau_f), \hfill \\
-                 & \omega_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}+e^{\tau_f-\tau})-u_*  . \hfill            \\
+                 & m_3(\tau) = u_* \left(\tau _f-\tau \right), \hfill                                                   \\
+                 & \theta_3(\tau) = \frac{1}{2} u_* \left(-e^{\tau -\tau _f}+e^{\tau _f-\tau }-2 \tau _f+2 \tau
+                \right), \hfill                                                                                         \\
+                 & \omega_3(\tau) =-\frac{1}{2} u_* e^{-\tau _f-\tau } \left(e^{\tau }-e^{\tau _f}\right){}^2  . \hfill \\
             \end{aligned}} \right.
 \]
 Теперь найдем решения, учитывая что
@@ -453,13 +504,20 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
 \[
     \left\{
     \begin{multlined}
-        -u_*\tau_f+u_*\tau_2=2u_*\tau_1-u_*\tau_2, \\
+        \left(\tau _2-2 \tau _1\right) u_*=u_* \left(\tau _f-\tau _2\right), \\
         % 2-nd equation
-        \shoveleft{ \frac{\Omega_0-u_*}{2}(e^{\tau_2}-e^{-\tau_2})+\frac{1}{2}(e^{\tau_2}+e^{-\tau_2})+u_*(2\tau_1-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}-\tau_2)=} \\
-        \shoveright{=\frac{u_*}{2}(-e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})+u_*(\tau_2-\tau_f),} \\
+        \shoveleft{\frac{1}{2} \left(\left(e^{\tau _2}-e^{-\tau _2}\right) \Omega _0+e^{-\tau
+        _2}+e^{\tau _2}+\left(4 \tau _1-2 e^{\tau _1-\tau _2}+e^{-\tau _2}-e^{\tau
+        _2}+2 e^{\tau _2-\tau _1}-2 \tau _2\right) u_*\right)=} \\
+        \shoveright{=\frac{1}{2} u_* \left(-e^{\tau _2-\tau _f}+e^{\tau _f-\tau _2}-2 \tau _f+2
+        \tau _2\right),} \\
         % 4-th equation
-        \shoveleft{\frac{1}{2}(e^{\tau_2}-e^{-\tau_2})+\frac{\Omega_0-u_*}{2}(e^{\tau_2}+e^{-\tau_2})+u_*(-1+e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2})=} \\
-        =\frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-u_*.
+        \shoveleft{\frac{1}{2} e^{-\tau _1-\tau _2} \left(e^{\tau _1} \left(e^{2 \tau
+        _2}+1\right) \Omega _0+e^{\tau _1} \left(e^{2 \tau
+        _2}-1\right)-\left(e^{\tau _1}-2 e^{2 \tau _1}-2 e^{2 \tau _2}+2 e^{\tau
+        _1+\tau _2}+e^{\tau _1+2 \tau _2}\right) u_*\right)=} \\
+        =-\frac{1}{2} u_* e^{-\tau _f-\tau _2} \left(e^{\tau _2}-e^{\tau
+        _f}\right){}^2.
     \end{multlined}
     \right.
 \]
