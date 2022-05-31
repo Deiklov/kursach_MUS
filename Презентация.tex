@@ -5,6 +5,7 @@
 \usepackage[T2A]{fontenc}
 \usepackage[russian]{babel}
 \usepackage{hyperref}
+\usepackage{amsmath}
 %\usepackage[footnotes,oglav,spisok,boldsect,eqwhole,kursrab,hyperprint]{project1}
 \usetheme{Copenhagen}
 \useoutertheme{default}
@@ -92,7 +93,7 @@
 		\column{0.5\textwidth}
 
 		\[
-			J\ddot{\varphi}=mgl\varphi+M
+			J\ddot{\varphi}=m_Txgl\varphi+M
 		\]
 		\[
 			\varphi(0)=\varphi_0,\, \dot{\varphi}(0)=\omega_0
@@ -101,7 +102,7 @@
 			\varphi(t)=\varphi_k,\, \dot{\varphi}(t_k)=0
 		\]
 		\[
-			M(0)=M(t_k)=-mgl\varphi_k
+			M(0)=M(t_k)=-m_Tgl\varphi_k
 		\]
 		\[
 			U^-\leq\dot{M}\leq U^+
@@ -117,7 +118,7 @@
 	\begin{columns}
 		\column{0.3\textwidth}
 		\[
-			\theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{mgl\varphi}
+			\theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{m_Tgl\varphi}
 		\]
 		\column{0.6\textwidth}
 		Необходимо решение системы
@@ -154,9 +155,9 @@
 	Сопряженная система уравнений
 	\begin{equation} \label{7}
 		\left\{ {\begin{aligned}
-					 & \dot \psi _1  = - \psi_2\hfill  \\
-					 & \dot \psi _2   = - \psi_1\hfill \\
-					 & \dot \psi _3   = - \psi_2 . \hfill        \\
+					 & \dot \psi _1  = - \psi_2\hfill     \\
+					 & \dot \psi _2   = - \psi_1\hfill    \\
+					 & \dot \psi _3   = - \psi_2 . \hfill \\
 				\end{aligned}} \right.
 	\end{equation}
 
@@ -165,9 +166,9 @@
 \begin{frame}{Анализ сопряженной системы}
 	\begin{equation}\label{psisystem}
 		\left\{ {\begin{aligned}
-					 & \psi_1 = -C_1e^\tau+C_2e^{-\tau}+C_3, \hfill \\
-					 & \psi_2 = C_1e^\tau+C_2e^{-\tau} , \hfill     \\
-					 & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 . \hfill     \\
+					 & \psi_1 = -C_1e^\tau+C_2e^{-\tau}+C_3, \hfill  \\
+					 & \psi_2 = C_1e^\tau+C_2e^{-\tau} , \hfill      \\
+					 & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 . \hfill \\
 				\end{aligned}} \right.
 	\end{equation}
 	Анализируя корни уравнения $\psi_3(\tau)=0$, для различной комбинации
@@ -185,49 +186,51 @@
 			\theta(0)=1;\ \omega(0)=\Omega_0;\ m(0)=0
 		\]
 		Решение
-		\begin{equation}\label{solvefull1stage}
+		\[
 			\left\{ {\begin{aligned}
-						 & m_1(\tau) = u_*\tau, \hfill                                                                              \\
-						 & \theta_1(\tau) = \frac{u_*+\Omega_0}{2}(e^\tau-e^{-\tau})+\frac{1}{2}(e^\tau+e^{-\tau})-u_*\tau , \hfill \\
-						 & \omega_1(\tau) = \frac{1}{2}(e^\tau-e^{-\tau})+\frac{u_*+\Omega_0}{2}(e^\tau+e^{-\tau})-u_*  . \hfill    \\
+						 & m_1(\tau) = -\tau  u_*, \hfill                                                               \\
+						 & \theta(\tau_1) = \frac{1}{2} e^{-\tau } \left(\left(e^{2 \tau }-1\right) \Omega _0+e^{2 \tau
+						}+\left(2 e^{\tau } \tau -e^{2 \tau }+1\right) u_*+1\right) , \hfill                            \\
+						 & \omega(\tau_1) =\frac{1}{2} e^{-\tau } \left(\left(e^{2 \tau }+1\right) \Omega
+						_0-\left(e^{\tau }-1\right) \left(-e^{\tau }+\left(e^{\tau }-1\right)
+						u_*-1\right)\right)   . \hfill                                                                  \\
 					\end{aligned}} \right.
-		\end{equation}
+		\]
 	\end{columns}
 \end{frame}
 \begin{frame}{Решение системы на 2 этапе}
 	\begin{columns}
 		\column{1\textwidth}
-		Этап 2. $u=-u_*$ начальные условия
+		Этап 2. $u=u_*$ начальные условия
 		\[
 			\theta(\tau_1)=\theta_1(\tau_1);\ \omega(\tau_1)=\omega_1(\tau_1);\ m(\tau_1)=m_1(\tau_1)
 		\]
 		Решение
-		{\footnotesize
-		\begin{equation}\label{final2stage}
+		\[
 			\left\{ {\begin{aligned}
-						 & m_2(\tau) = 2u_*\tau_1-u\tau, \hfill                                                                                                                            \\
-						 & \theta_2(\tau) = \frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(2\tau_1-e^{\tau_1-\tau}+e^{-\tau_1+\tau}-\tau) , \hfill \\
-						 & \omega_2(\tau) = \frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(1-e^{\tau_1-\tau}-e^{-\tau_1+\tau})  . \hfill           \\
+						 & m_2(\tau) = \left(\tau -2 \tau _1\right) u_*, \hfill                                                                                                \\
+						 & \theta_2(\tau) = \frac{e^\tau+e^{-\tau}}{2}+\frac{\Omega_0-u_\ast}{2}(e^\tau-e^{-\tau})+u_*(e^{\tau-\tau_1}-e^{-\tau+\tau_1}+2\tau_1-\tau) , \hfill \\
+						 & \omega_2(\tau) = \frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_\ast}{2}(e^\tau+e^{-\tau})+u_*(e^{\tau-\tau_1}+e^{-\tau+\tau_1}-1) . \hfill            \\
 					\end{aligned}} \right.
-		\end{equation}
-		}
+		\]
 	\end{columns}
 \end{frame}
 \begin{frame}{Решение системы на 3 этапе}
 	\begin{columns}
 		\column{1\textwidth}
-		Этап 3. $u=u_*$ конечные условия
+		Этап 3. $u=-u_*$ конечные условия
 		\[
 			\theta(\tau_f)=0;\ \omega(\tau_f)=0;\ m(\tau_f)=0
 		\]
 		Решение
-		\begin{equation}\label{final3stage}
+		\[
 			\left\{ {\begin{aligned}
-						 & m_3(\tau) = -u_*\tau_f+u_*\tau, \hfill                                                    \\
-						 & \theta_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}-e^{\tau_f-\tau})-u_*(\tau-\tau_f), \hfill \\
-						 & \omega_3(\tau) = \frac{u_*}{2}(e^{-\tau_f+\tau}+e^{\tau_f-\tau})-u_*  . \hfill            \\
+						 & m_3(\tau) = u_* \left(\tau _f-\tau \right), \hfill                                           \\
+						 & \theta_3(\tau) = \frac{1}{2} u_* \left(-e^{\tau -\tau _f}+e^{\tau _f-\tau }-2 \tau _f+2 \tau
+						\right), \hfill                                                                                 \\
+						 & \omega_3(\tau) =u_*-\frac{u_*}{2}(e^{\tau-\tau_f}+e^{-\tau+\tau_f}) . \hfill                 \\
 					\end{aligned}} \right.
-		\end{equation}
+		\]
 	\end{columns}
 \end{frame}
 
@@ -242,13 +245,13 @@
 	\begin{columns}
 		\column{1.2\textwidth}
 		{\footnotesize
-			\begin{equation}
-				\footnotesize\left\{ {\begin{aligned}
-							 & \tau_f=2(\tau_2-\tau_1), \hfill                                                                                                                                                                 \\
-							 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}-e^{\tau_f-\tau_2}) =\frac{u_*+\Omega_0}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{1}{2}(e^{\tau_1}+e^{-\tau_1})-u_*(-e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}), \hfill      \\
-							 & \frac{u_*}{2}(e^{-\tau_f+\tau_2}+e^{\tau_f-\tau_2})-2u_*=\frac{1}{2}(e^{\tau_1}-e^{-\tau_1})+\frac{u_*+\Omega_0}{2}(e^{\tau_1}+e^{-\tau_1})+u_*(-e^{\tau_1-\tau_2}-e^{-\tau_1+\tau_2}) . \hfill \\
+			\[
+				\left\{ {\begin{aligned}
+							 & \tau_f=2(\tau_2-\tau_1),                                                                                                                                                                 \\
+							 & \frac{e^{\tau_2}+e^{-\tau_2}}{2}+\frac{\Omega_0-u_*}{2}(e^{\tau_2}-e^{-\tau_2})+u_*\left(e^{-\tau_1+\tau_2}-e^{\tau_1-\tau_2}+\frac{e^{\tau_2-\tau_f}-e^{-\tau_2+\tau_f}}{2}\right)=0,   \\
+							 & \frac{e^{\tau_2}-e^{-\tau_2}}{2}+\frac{\Omega_0-u_*}{2}(e^{\tau_2}+e^{-\tau_2})+u_*\left(e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}+\frac{e^{\tau_2-\tau_f}+e^{-\tau_2+\tau_f}}{2}-2\right)=0. \\
 						\end{aligned}} \right.
-			\end{equation}
+			\]
 		}
 	\end{columns}
 \end{frame}
@@ -257,19 +260,73 @@
 	\[
 		x=e^{\tau_1} ,\,\,y=e^{\tau_2} ,\,\,z=e^{\frac{\tau_f}{2}}
 	\]
-	\begin{equation}\label{findtau3}
+	\begin{equation}\label{fullchanged}
 		\left\{ {\begin{aligned}
-					 & z=\frac{y}{x}, \hfill                                                                                                                                         \\
-					 & \frac{u_*}{2}\big(\frac{y}{z^2}-\frac{z^2}{y}\big)=\frac{u_*+\Omega_0}{2}(x-\frac{1}{x})+\frac{1}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}-\frac{x}{y}), \hfill      \\
-					 & \frac{u_*}{2}\big(\frac{y}{z^2}+\frac{z^2}{y}\big)-2u_*=\frac{1}{2}(x-\frac{1}{x})+\frac{u_*+\Omega_0}{2}(x+\frac{1}{x})-u_*(\frac{y}{x}+\frac{x}{y}). \hfill \\
+					 & z=\frac{y}{x}, \hfill                                                                                                              \\
+					 & (\Omega_0-u_*)\left( xy-\frac{x}{y}\right)+u_*\left(\frac{x^3}{y}-\frac{y}{x}-\frac{2x^2}{y}+2y\right)+\frac{x}{y}+xy=0, \hfill    \\
+					 & (\Omega_0-u_*)\left( xy+\frac{x}{y}\right)+u_*\left(\frac{x^3}{y}+\frac{y}{x}+\frac{2x^2}{y}+2y-4x\right)-\frac{x}{y}+xy=0. \hfill \\
 				\end{aligned}} \right.
 	\end{equation}
 \end{frame}
 
+\begin{frame}{Численные примеры реализации оптимального управления}
+	Построим оптимальную траекторию, учитывая полученные соотношения для управления.
 
+	$m_T=74$кг; $l=0.88$м; $J=\frac{4ml^2}{3}$кг$\cdot$м$^2$
+	\[
+		t_\ast=\sqrt{\frac{J}{m_Tgl}}=\sqrt{\frac{4l}{3g}}=0.346c
+	\]
+
+	$u^*_{max}=1.65$
+
+	Характерное значение для $\varphi_\ast=0.087 \text{ рад}$, для $\omega_0=0.069 \text{ рад/с}$.
+
+	$\Omega_0=\frac{t_\ast}{\varphi_\ast}\omega_0=0.274$
+
+	Найдем корни системы \eqref{fullchanged} при $\theta^{'}(0)=\Omega_0$, $\theta^{'}(0)=1.3\Omega_0$ и при $\theta^{'}(0)=0.7\Omega_0$.
+
+	При $\theta^{'}(0)=\Omega_0$: $\tau_1=2.12;\tau_2=4.88;\tau_f=5.51;$
+
+	При $\theta^{'}(0)=1.3\Omega_0$: $\tau_1=2.38,\tau_2=5.41,\tau_f=6.06;$
+
+	При $\theta^{'}(0)=0.7\Omega_0$: $\tau_1=2.06,\tau_2=4.74,\tau_f=5.37.$
+
+\end{frame}
+
+\begin{frame}{Зависимость $m[\tau]$}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1.0\linewidth]{images/m.jpeg}
+		\caption{Зависимость $m[\tau]$}
+		\label{fig:m}
+	\end{figure}
+\end{frame}
+\begin{frame}{Зависимость $\Theta[\tau]$}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1.0\linewidth]{images/theta.jpeg}
+		\caption{Зависимость $\Theta[\tau]$}
+		\label{fig:theta}
+	\end{figure}
+\end{frame}
+\begin{frame}{Зависимость $\omega[\tau]$}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1.0\linewidth]{images/omega.jpeg}
+		\caption{Зависимость $\omega[\tau]$}
+		\label{fig:omega}
+	\end{figure}
+\end{frame}
 
 \begin{frame}{Заключение}
-
+	В курсовой работе были представлены оптимальные алгоритмы управления
+	движением позой при ступенчатом воздействии, основанные на модели
+	«перевернутого маятника» удовлетворяющие принципу максимума Понтрягина.
+	В задаче ставилось ограничение на скорость изменения момента в голеностопном суставе.
+	\begin{itemize}
+		\item Показано, что решение оптимальной задачи быстродействия при ограниченной скорости изменения момента в голеностопном суставе может иметь решение, которое хорошо качественно совпадает с картиной, наблюдаемой в стабилометрических исследованиях.
+		\item Время необходимое для восстановления исходной позы получилось соизмеримым с реальным времени возвращения после толчка.
+	\end{itemize}
 
 \end{frame}
 
