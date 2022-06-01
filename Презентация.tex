@@ -93,7 +93,7 @@
 		\column{0.5\textwidth}
 
 		\[
-			J\ddot{\varphi}=m_Txgl\varphi+M
+			J\ddot{\varphi}=m_Tgl\varphi+M
 		\]
 		\[
 			\varphi(0)=\varphi_0,\, \dot{\varphi}(0)=\omega_0
@@ -132,7 +132,7 @@
 		\]
 		с помощью ограниченного управления
 		\[
-			u^-\le\ u\le\ u^+,\ \text{где } u^-=\frac{U^-}{mgl\varphi_\ast t_\ast}=-u^+
+			u^-\le\ u\le\ u^+,\ \text{где } u^-=\frac{U^-}{m_Tgl\varphi_\ast t_\ast}=-u^+
 		\]
 
 	\end{columns}
@@ -189,11 +189,8 @@
 		\[
 			\left\{ {\begin{aligned}
 						 & m_1(\tau) = -\tau  u_*, \hfill                                                               \\
-						 & \theta(\tau_1) = \frac{1}{2} e^{-\tau } \left(\left(e^{2 \tau }-1\right) \Omega _0+e^{2 \tau
-						}+\left(2 e^{\tau } \tau -e^{2 \tau }+1\right) u_*+1\right) , \hfill                            \\
-						 & \omega(\tau_1) =\frac{1}{2} e^{-\tau } \left(\left(e^{2 \tau }+1\right) \Omega
-						_0-\left(e^{\tau }-1\right) \left(-e^{\tau }+\left(e^{\tau }-1\right)
-						u_*-1\right)\right)   . \hfill                                                                  \\
+						 & \theta_1(\tau) = \frac{e^\tau+e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau-e^{-\tau})+\tau u_* , \hfill                            \\
+						 & \omega_1(\tau) =\frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau+e^{-\tau})+u_*   . \hfill                                                                  \\
 					\end{aligned}} \right.
 		\]
 	\end{columns}
@@ -329,17 +326,5 @@
 	\end{itemize}
 
 \end{frame}
-
-
-\begin{frame}{Используемая литература}
-
-	\begin{thebibliography}{3}
-		\bibitem{Kim} Атанс М., Фалб П., Оптимальное управление. Москва, Машиностроение, 1968, 764 с.
-		\bibitem{Pontryagin} Понтрягин Л.С., Болтянский В.Г., Гамкрелидзе Р.В., Мищенко Е.Ф. Математическая теория оптимальных процессов. Москва, Наука, 1983, 393 с.\\
-		\bibitem{Most} Мостовской А.П. Численные методы и система Mathematica. Мурманск: 2009. - 249 с.
-	\end{thebibliography}
-
-\end{frame}
-
 
 \end{document}
