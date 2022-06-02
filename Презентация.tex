@@ -114,14 +114,10 @@ Model of returning to human initial posture after push}}
 
 \begin{frame}{Переход к безразмерным величинам}
 	\[
-		\theta^{''}=\theta+m;\ m^{'}=u
+		\theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{m_Tgl\varphi}, \ \ \theta^{''}=\theta+m;\ m^{'}=u
 	\]
 	\begin{columns}
-		\column{0.3\textwidth}
-		\[
-			\theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{m_Tgl\varphi}
-		\]
-		\column{0.6\textwidth}
+		\column{0.9\textwidth}
 		Необходимо решение системы
 		перевести из начального положения
 		\[
@@ -133,7 +129,7 @@ Model of returning to human initial posture after push}}
 		\]
 		с помощью ограниченного управления
 		\[
-			u^-\le\ u\le\ u^+,\ \text{где } u^-=\frac{U^-}{m_Tgl\varphi_\ast t_\ast}=-u^+
+			u^-\le\ u\le\ u^+,\ \text{где } u^-=\frac{U^-}{m_Tgl\varphi_\ast t_\ast}=-u^+, \ \ |u^-|=|u^+|=-u_{max}^*
 		\]
 
 	\end{columns}
@@ -189,9 +185,9 @@ Model of returning to human initial posture after push}}
 		Решение
 		\[
 			\left\{ {\begin{aligned}
-						 & m_1(\tau) = -\tau  u_*, \hfill                                                               \\
-						 & \theta_1(\tau) = \frac{e^\tau+e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau-e^{-\tau})+\tau u_* , \hfill                            \\
-						 & \omega_1(\tau) =\frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau+e^{-\tau})+u_*   . \hfill                                                                  \\
+						 & m_1(\tau) = -\tau  u_*, \hfill                                                                         \\
+						 & \theta_1(\tau) = \frac{e^\tau+e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau-e^{-\tau})+\tau u_* , \hfill \\
+						 & \omega_1(\tau) =\frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau+e^{-\tau})+u_*   . \hfill     \\
 					\end{aligned}} \right.
 		\]
 	\end{columns}
