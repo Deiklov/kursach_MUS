@@ -135,7 +135,7 @@
 человека, после толчка в спину, определяемое по показаниям стабилоанализатора.
 
 В ходе теста производят толкающее воздействие на человека с помощью руки или
-груза, помещенного на подвижном отвесе. В результате внешнего
+груза, помещенного на подвижном отвесе \cite{pusher}. В результате внешнего
 воздействия тело человека наклоняется вперед и при не очень сильном толчке
 он не теряет равновесие и не падает, а возвращается в исходное
 положение за счет изменения угла в голеностопном суставе. Изменение
@@ -278,7 +278,7 @@
             \end{aligned}} \right.
 \end{equation}
 
-$|u|<U_{max}$
+$|u|\leqslant u_{max}$
 \[
     \theta(0)=1;\ \omega(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
 \]
@@ -319,8 +319,8 @@ $J=\tau_f\to \min$
 \[
     u=
     \begin{cases}
-        -U_{max}, & \text{при $\psi_3<0$}          \\
-        +U_{max}, & \text{при $\psi_3\geqslant 0$}
+        -u_{max}, & \text{при $\psi_3<0$}          \\
+        +u_{max}, & \text{при $\psi_3\geqslant 0$}
     \end{cases}
 \]\\*
 Продифференцируем по безразмерному времени второе уравнение из \eqref{7} и подставим в него первое, получим
@@ -339,7 +339,7 @@ $J=\tau_f\to \min$
 Анализируя корни уравнения $\psi_3(\tau)=0$, для различной комбинации
 коэффициентов $C_1,C_2,C_3$, получим, что число корней не может быть больше двух. В системе может быть не более двух переключений $u$.
 
-Пусть $u^*=\mathrm{const}$ управление на первом участке траектории до первого переключения $u^*=U_{max}$ или $u^*=U_{min}=-U_{max}$
+Пусть $u^*=\mathrm{const}$ управление на первом участке траектории до первого переключения $u^*=-u_{max}$.
 
 Решая систему \eqref{koshisystem}, получим
 \begin{equation}\label{solvekoshi}
@@ -383,9 +383,9 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
 Подставим полученные константы в \eqref{solvekoshi}
 \[
     \left\{ {\begin{aligned}
-                 & m_1(\tau) = -\tau  u_*, \hfill                                                               \\
-                 & \theta_1(\tau) = \frac{e^\tau+e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau-e^{-\tau})+\tau u_* , \hfill                            \\
-                 & \omega_1(\tau) =\frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau+e^{-\tau})+u_*   . \hfill                                                                  \\
+                 & m_1(\tau) = -\tau  u_*, \hfill                                                                         \\
+                 & \theta_1(\tau) = \frac{e^\tau+e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau-e^{-\tau})+\tau u_* , \hfill \\
+                 & \omega_1(\tau) =\frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau+e^{-\tau})+u_*   . \hfill     \\
             \end{aligned}} \right.
 \]
 Этап 2. $u=u_*$ начальные условия
@@ -436,7 +436,7 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
                  & \omega_2(\tau) = \frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_\ast}{2}(e^\tau+e^{-\tau})+u_*(e^{\tau-\tau_1}+e^{-\tau+\tau_1}-1) . \hfill            \\
             \end{aligned}} \right.
 \]
-Этап 3. $u=u_*$ конечные условия
+Этап 3. $u=-u_*$ конечные условия
 \[
     m(\tau_f)=0; \ \theta(\tau_f)=0;\ \omega(\tau_f)=0;
 \]
@@ -518,9 +518,9 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{koshisystem} на тр
 \]
 \begin{equation}\label{fullchanged}
     \left\{ {\begin{aligned}
-                 & z=\frac{y}{x}, \hfill                                         \\
-                 & (\Omega_0-u_*)\left( xy-\frac{x}{y}\right)+u_*\left(\frac{x^3}{y}-\frac{y}{x}-\frac{2x^2}{y}+2y\right)+\frac{x}{y}+xy=0, \hfill      \\
-                 & (\Omega_0-u_*)\left( xy+\frac{x}{y}\right)+u_*\left(\frac{x^3}{y}+\frac{y}{x}+\frac{2x^2}{y}+2y-4x\right)-\frac{x}{y}+xy=0. \hfill    \\
+                 & z=\frac{y}{x}, \hfill                                                                                                              \\
+                 & (\Omega_0-u_*)\left( xy-\frac{x}{y}\right)+u_*\left(\frac{x^3}{y}-\frac{y}{x}-\frac{2x^2}{y}+2y\right)+\frac{x}{y}+xy=0, \hfill    \\
+                 & (\Omega_0-u_*)\left( xy+\frac{x}{y}\right)+u_*\left(\frac{x^3}{y}+\frac{y}{x}+\frac{2x^2}{y}+2y-4x\right)-\frac{x}{y}+xy=0. \hfill \\
             \end{aligned}} \right.
 \end{equation}
 Привести систему \eqref{fullchanged} к полиномиальному виду, как это сделано в работах \cite{PAKrychinin,kurscah}, не удалось, поэтому
@@ -553,20 +553,20 @@ $\Omega_0=\frac{t_\ast}{\varphi_\ast}\omega_0=0.274$
 Для полученных значений $\tau_1,\tau_2,\tau_f$ построим графики решений системы \eqref{koshisystem}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{m.jpeg}
-    \caption{Зависимость $m[\tau]$}
+    \includegraphics[width=0.69\linewidth]{m.jpeg}
+    \caption{Зависимость $m(\tau)$}
     \label{fig:m}
 \end{figure}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{theta.jpeg}
-    \caption{Зависимость $\Theta[\tau]$}
+    \includegraphics[width=0.69\linewidth]{theta.jpeg}
+    \caption{Зависимость $\Theta(\tau)$}
     \label{fig:theta}
 \end{figure}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{omega.jpeg}
-    \caption{Зависимость $\omega[\tau]$}
+    \includegraphics[width=0.69\linewidth]{omega.jpeg}
+    \caption{Зависимость $\omega(\tau)$}
     \label{fig:omega}
 \end{figure}
 
@@ -588,6 +588,7 @@ $\Omega_0=\frac{t_\ast}{\varphi_\ast}\omega_0=0.274$
     \bibitem{humanMovements}Happee R. Time optimality in the control of human movements// Biological cybernetics- 1992, vol. 66 – pp. 357-366.
     \bibitem{AdaptFizkult}Слива С.С., Войнов И.Д., Слива А.С. Стабилоанализаторы в адаптивной физической культуре и спорте// IV Международная научная конференция по вопросам состояния и перспективам развития медицины в спорте высших достижений «СПОРТМЕД-2009» - М.: Экспоцентр, 2009.– С.121-123.
     \bibitem{stabilographTest}Муртазина Е.П. Функциональные особенности выполнения стабилографических тестов у испытуемых с различными антропометрическими данными // Известия ЮФУ. Технические науки.- 2009.-№9-С.123-127.
+    \bibitem{pusher}Мельников А.А., Филёва В.В. Методика определения устойчивости вертикальной позы под влиянием внешнего толкающего воздействия // Физиология. 2015. С. 31–37.
     \bibitem{PAKrychinin}Кручинин П.А. Анализ результатов стабилометрических тестов со ступенчатым воздействием с точки зрения механики управляемых систем
     // Биофизика. – 2019. – Т. 64, №5. – С. 1–11.
     \bibitem{kasatkin} П. А. Кручинин и Е. А. Касаткин, Изв. ЮФУ.
