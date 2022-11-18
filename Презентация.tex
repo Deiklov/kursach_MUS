@@ -34,8 +34,8 @@
 %     text margin left=0.8cm,
 %     text margin right=0.8cm
 % }
-\title{\textbf{Модель восстановления человеком исходной позы после толчка \\
-Model of returning to human initial posture after push}}
+\title{\textbf{Восстановление человеком исходной позы после толчка \\
+Reversion of initial posture by a person after a push}}
 
 \author{\textbf{Романов Андрей Владимирович}}
 \institute{\textbf{МГУ им. М.В. Ломоносова}\\\textbf{Механико-математический факультет} \\ \textbf{Кафедра прикладной механики и управления}}
@@ -68,19 +68,21 @@ Model of returning to human initial posture after push}}
 
 \begin{frame}{Задача быстродействия}
 	\begin{columns}
-		\column{0.62\textwidth}
+		\column{0.55\textwidth}
 		\begin{figure}[h!]
 			\includegraphics[width=1\linewidth]{images/stabilos.png}
 			\caption{Характерный вид сагиттальной стабилограммы при выполнении теста со ступенчатым воздействием}
 		\end{figure}
-		\column{0.5\textwidth}
+		\column{0.6\textwidth}
 		% \column{\dimexpr\paperwidth-2pt}
-		В работе рассматривается задача быстродействия для установки
-		перевернутого маятника в неустойчивое вертикальное положение
-		равновесия. Предполагается сравнение результатов стабилометрических
-		проб, при которых человек возвращается в исходную вертикальную
-		позу после толчка, с решением этой оптимальной задачи для начальных
-		условий, соответствующих моменту времени завершения толчка.
+		В работе рассматриваются возможные алгоритмы управления изменением
+		позы человека, основанные на решении задачи оптимального быстродействия,
+		которые можно было бы использовать для возвращения человека в исходную 
+		вертикальную позу. В качестве математической модели используется модель
+		«перевернутого маятника». Это решение предлагается использовать для
+		оценки эффективности управления человеком при возвращении в
+		вертикальную позу, путем сравнения времени реального процесса с полученным
+		эталонным решением оптимальной задачи.
 	\end{columns}
 \end{frame}
 
@@ -111,224 +113,22 @@ Model of returning to human initial posture after push}}
 	\end{columns}
 \end{frame}
 
-
-\begin{frame}{Переход к безразмерным величинам}
-	\[
-		\theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{m_Tgl\varphi}, \ \ \theta^{''}=\theta+m;\ m^{'}=u
-	\]
-	\begin{columns}
-		\column{0.9\textwidth}
-		Необходимо решение системы
-		перевести из начального положения
-		\[
-			\theta(0)=1;\ \dot{\theta}(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
-		\]
-		в положение
-		\[
-			\theta(\tau_f)=0;\ \dot{\theta}(\tau_f)=0;\ m(\tau_f)=0
-		\]
-		с помощью ограниченного управления
-		\[
-			u^-\le\ u\le\ u^+,\ \text{где } u^-=\frac{U^-}{m_Tgl\varphi_\ast t_\ast}=-u^+, \ \ |u^-|=|u^+|=u_{max}^*
-		\]
-
-	\end{columns}
+\begin{frame}{Связь центра масс и центра дваления}
+	мое уравнение написать $\eta=f(y)$
 \end{frame}
 
-\begin{frame}{Принцип максимума Понтрягина}
-	Система в форме Коши
-	\begin{equation}\label{koshisystem}
-		\left\{ {\begin{aligned}
-					 & \theta^{'} = \omega , \hfill   \\
-					 & \omega^{'} = \theta+m , \hfill \\
-					 & m^{'} = u . \hfill             \\
-				\end{aligned}} \right.
-	\end{equation}
-	$J=\tau_f\to \min$
-
-	Функция Понтрягина
-	\[
-		H=\psi_1\cdot\omega+\psi_2\cdot(\theta+m)+\psi_3\cdot u
-	\]
-
-	Сопряженная система уравнений
-	\begin{equation} \label{7}
-		\left\{ {\begin{aligned}
-					 & \psi^{'}_1  = - \psi_2\hfill     \\
-					 & \psi^{'}_2   = - \psi_1\hfill    \\
-					 & \psi^{'}_3   = - \psi_2 . \hfill \\
-				\end{aligned}} \right.
-	\end{equation}
-
+\begin{frame}{Моделирование движения человека}
+	Картинки с полученными графиками толчки, центр масс
+	
 \end{frame}
 
-\begin{frame}{Анализ сопряженной системы}
-	\begin{equation}\label{psisystem}
-		\left\{ {\begin{aligned}
-					 & \psi_1 = -C_1e^\tau+C_2e^{-\tau}+C_3, \hfill  \\
-					 & \psi_2 = C_1e^\tau+C_2e^{-\tau} , \hfill      \\
-					 & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 . \hfill \\
-				\end{aligned}} \right.
-	\end{equation}
-	Анализируя корни уравнения $\psi_3(\tau)=0$, для различной комбинации
-	коэффициентов $C_1,C_2,C_3$, получим, что число корней не может быть больше двух. В системе может быть не более двух переключений $u$.
-\end{frame}
-
-
-
-
-\begin{frame}{Решение системы на 1 этапе}
-	\begin{columns}
-		\column{1\textwidth}
-		Этап 1. $u=-u_*$ начальные условия
-		\[
-			\theta(0)=1;\ \omega(0)=\Omega_0;\ m(0)=0
-		\]
-		Решение
-		\[
-			\left\{ {\begin{aligned}
-						 & m_1(\tau) = -\tau  u_*, \hfill                                                                         \\
-						 & \theta_1(\tau) = \frac{e^\tau+e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau-e^{-\tau})+\tau u_* , \hfill \\
-						 & \omega_1(\tau) =\frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau+e^{-\tau})+u_*   . \hfill     \\
-					\end{aligned}} \right.
-		\]
-	\end{columns}
-\end{frame}
-\begin{frame}{Решение системы на 2 этапе}
-	\begin{columns}
-		\column{1\textwidth}
-		Этап 2. $u=u_*$ начальные условия
-		\[
-			\theta(\tau_1)=\theta_1(\tau_1);\ \omega(\tau_1)=\omega_1(\tau_1);\ m(\tau_1)=m_1(\tau_1)
-		\]
-		Решение
-		\[
-			\left\{ {\begin{aligned}
-						 & m_2(\tau) = \left(\tau -2 \tau _1\right) u_*, \hfill                                                                                                \\
-						 & \theta_2(\tau) = \frac{e^\tau+e^{-\tau}}{2}+\frac{\Omega_0-u_\ast}{2}(e^\tau-e^{-\tau})+u_*(e^{\tau-\tau_1}-e^{-\tau+\tau_1}+2\tau_1-\tau) , \hfill \\
-						 & \omega_2(\tau) = \frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_\ast}{2}(e^\tau+e^{-\tau})+u_*(e^{\tau-\tau_1}+e^{-\tau+\tau_1}-1) . \hfill            \\
-					\end{aligned}} \right.
-		\]
-	\end{columns}
-\end{frame}
-\begin{frame}{Решение системы на 3 этапе}
-	\begin{columns}
-		\column{1\textwidth}
-		Этап 3. $u=-u_*$ конечные условия
-		\[
-			\theta(\tau_f)=0;\ \omega(\tau_f)=0;\ m(\tau_f)=0
-		\]
-		Решение
-		\[
-			\left\{ {\begin{aligned}
-						 & m_3(\tau) = u_* \left(\tau _f-\tau \right), \hfill                                           \\
-						 & \theta_3(\tau) = \frac{1}{2} u_* \left(-e^{\tau -\tau _f}+e^{\tau _f-\tau }-2 \tau _f+2 \tau
-						\right), \hfill                                                                                 \\
-						 & \omega_3(\tau) =u_*-\frac{u_*}{2}(e^{\tau-\tau_f}+e^{-\tau+\tau_f}) . \hfill                 \\
-					\end{aligned}} \right.
-		\]
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Сопряжение уравнений}
-	\begin{equation}
-		\left\{ {\begin{aligned}
-					 & m_2(\tau_2) = m_3(\tau_2), \hfill            \\
-					 & \theta_2(\tau_2) =  \theta_3(\tau_2), \hfill \\
-					 & \omega_2(\tau_2) = \omega_3(\tau_2) . \hfill \\
-				\end{aligned}} \right.
-	\end{equation}
-	\begin{columns}
-		\column{1.2\textwidth}
-		{\footnotesize
-			\[
-				\left\{ {\begin{aligned}
-							 & \tau_f=2(\tau_2-\tau_1),                                                                                                                                                                 \\
-							 & \frac{e^{\tau_2}+e^{-\tau_2}}{2}+\frac{\Omega_0-u_*}{2}(e^{\tau_2}-e^{-\tau_2})+u_*\left(e^{-\tau_1+\tau_2}-e^{\tau_1-\tau_2}+\frac{e^{\tau_2-\tau_f}-e^{-\tau_2+\tau_f}}{2}\right)=0,   \\
-							 & \frac{e^{\tau_2}-e^{-\tau_2}}{2}+\frac{\Omega_0-u_*}{2}(e^{\tau_2}+e^{-\tau_2})+u_*\left(e^{\tau_1-\tau_2}+e^{-\tau_1+\tau_2}+\frac{e^{\tau_2-\tau_f}+e^{-\tau_2+\tau_f}}{2}-2\right)=0. \\
-						\end{aligned}} \right.
-			\]
-		}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Замена переменных}
-	\[
-		x=e^{\tau_1} ,\,\,y=e^{\tau_2} ,\,\,z=e^{\frac{\tau_f}{2}}
-	\]
-	\begin{equation}\label{fullchanged}
-		\left\{ {\begin{aligned}
-					 & z=\frac{y}{x}, \hfill                                                                                                              \\
-					 & (\Omega_0-u_*)\left( xy-\frac{x}{y}\right)+u_*\left(\frac{x^3}{y}-\frac{y}{x}-\frac{2x^2}{y}+2y\right)+\frac{x}{y}+xy=0, \hfill    \\
-					 & (\Omega_0-u_*)\left( xy+\frac{x}{y}\right)+u_*\left(\frac{x^3}{y}+\frac{y}{x}+\frac{2x^2}{y}+2y-4x\right)-\frac{x}{y}+xy=0. \hfill \\
-				\end{aligned}} \right.
-	\end{equation}
-\end{frame}
-
-\begin{frame}{Численные примеры реализации оптимального управления}
-	Построим оптимальную траекторию, при следующих значениях параметров
-
-	$m_T=74$кг; $l=0.88$м; $J=\frac{4ml^2}{3}$кг$\cdot$м$^2$
-	\[
-		t_\ast=\sqrt{\frac{J}{m_Tgl}}=\sqrt{\frac{4l}{3g}}=0.346c
-	\]
-
-
-
-	Характерное значение для $\varphi_\ast=0.087 \text{ рад}$, для $\omega_0=0.069 \text{ рад/с}$.
-
-	$\Omega_0=\frac{t_\ast}{\varphi_\ast}\omega_0=0.274$
-
-	$u^*_{max}=1.65$
-
-\end{frame}
-\begin{frame}{Численные примеры реализации оптимального управления}
-	Найдем корни системы \eqref{fullchanged} при $\theta^{'}(0)=\Omega_0$, $\theta^{'}(0)=1.3\Omega_0$ и при $\theta^{'}(0)=0.7\Omega_0$.
-
-	\
-	При $\theta^{'}(0)=\Omega_0$: $\tau_1=2.12;\tau_2=4.88;\tau_f=5.51;$
-
-	При $\theta^{'}(0)=1.3\Omega_0$: $\tau_1=2.38,\tau_2=5.41,\tau_f=6.06;$
-
-	При $\theta^{'}(0)=0.7\Omega_0$: $\tau_1=2.06,\tau_2=4.74,\tau_f=5.37.$
-
-\end{frame}
-
-\begin{frame}{Зависимость $m(\tau)$}
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=1.0\linewidth]{images/m.jpeg}
-		\caption{Зависимость $m(\tau)$}
-		\label{fig:m}
-	\end{figure}
-\end{frame}
-\begin{frame}{Зависимость $\Theta(\tau)$}
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=1.0\linewidth]{images/theta.jpeg}
-		\caption{Зависимость $\Theta(\tau)$}
-		\label{fig:theta}
-	\end{figure}
-\end{frame}
-\begin{frame}{Зависимость $\omega(\tau)$}
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=1.0\linewidth]{images/omega.jpeg}
-		\caption{Зависимость $\omega(\tau)$}
-		\label{fig:omega}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Заключение}
-	В курсовой работе были представлены оптимальные алгоритмы управления
-	движением позой человека при толчке, основанные на модели
-	«перевернутого маятника». Построенные алгоритмы решали задачу наискорейшего возвращения человека в исходную вертикальную позицию.
-	В задаче ставилось ограничение на скорость изменения момента в голеностопном суставе.
+\begin{frame}{Дальнейшие шаги}
 	\begin{itemize}
-		\item Показано, что решение оптимальной задачи быстродействия при ограниченной скорости изменения момента в голеностопном суставе может иметь решение, которое качественно совпадает с картиной, наблюдаемой в стабилометрических исследованиях.
-		\item Время необходимое для восстановления исходной позы получилось соизмеримым с реальным временем возвращения после толчка.
-	\end{itemize}
-
+		\item Провести моделирование с использованием реальных данных и построить оценку траектории центра масс
+		\item Сравнить реальное время возвращения в вертикальную позу с полученными при решении задачи быстродействия
+		\item Построить траеткорию центра масс при управленнии, полученным при решении задачи быстродействия
+	  \end{itemize}
+	
 \end{frame}
 
 \end{document}
