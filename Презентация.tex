@@ -38,7 +38,9 @@
 Reversion of initial posture by a person after a push}}
 
 \author{\textbf{Романов Андрей Владимирович}}
-\institute{\textbf{МГУ им. М.В. Ломоносова}\\\textbf{Механико-математический факультет} \\ \textbf{Кафедра прикладной механики и управления}}
+\institute{\textbf{МГУ им. М.В. Ломоносова}\\\textbf{Механико-математический факультет} 
+\\ \textbf{Кафедра прикладной механики и управления}
+\\ \textbf{Научный руководитель: Кручинин П.А.}}
 \date{\today}
 
 
@@ -112,21 +114,88 @@ Reversion of initial posture by a person after a push}}
 		\]
 	\end{columns}
 \end{frame}
+\begin{frame}{Решение задачи быстродействия}
+	В прошлом году решалась задача быстродействия
+
+	Система разбивается на 3 этапа, на каждом из которых управление меняет знак
+
+	В результате получилось численное решение для нахождения времени возвращения в вертикальную позицию.
+\end{frame}
 
 \begin{frame}{Связь центра масс и центра дваления}
-	мое уравнение написать $\eta=f(y)$
+		\begin{columns}
+		\column{0.5\textwidth}
+		\begin{figure}[h!]
+			\includegraphics[width=0.8\linewidth]{images/body.png}
+			\caption{Силы действующие на модель стержня, имитирующего тело человека}
+		\end{figure}
+		\column{0.5\textwidth}
+		\begin{figure}[h!]
+			\includegraphics[width=0.8\linewidth]{images/foot.png}
+			\caption{Силы действующие на на систему «стопы ног – платформа стабилоанализатора» }
+		\end{figure}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}{Связь центра масс и центра давления}
+	\begin{columns}
+	\column{0.5\textwidth}
+	\begin{equation}\label{koshisystem}
+    \left\{ {\begin{aligned}
+                 & ml\ddot{\theta} = -R_y-F , \hfill   \\
+                 & 0=R_z-mg, \hfill \\
+                 & J \ddot{\theta} = mlg\theta-Fl\cos\theta+M_x . \hfill             \\
+            \end{aligned}} \right.
+\end{equation}
+	\column{0.5\textwidth}
+	\begin{equation}\label{koshisystem}
+		\left\{ {\begin{aligned}
+					 & M_x = Ny+F_yh , \hfill   \\
+					 & F_y = R_y , \hfill \\
+					 & N \approx mg . \hfill             \\
+				\end{aligned}} \right.
+	\end{equation}
+
+\end{columns}
+\[
+	\\
+	 M_x=mgy-h\left(F+ml\ddot{\theta}\right) \\
+	 \left(J+hml\right)\ddot{\theta}=mgl\theta+mgy-Fl-Fh \\
+\]
+\[
+	\frac{(J+hml)l\ddot{\theta}}{mgl}=l\theta+y-\frac{F}{mg}(l+h); \eta=-l\theta; T^2=\frac{J+hml}{mgl};
+\]
+$$ -T^2\ddot{\eta}=-\eta+y-\frac{F}{mg}(l+h)$$
+
 \end{frame}
 
 \begin{frame}{Моделирование движения человека}
-	Картинки с полученными графиками толчки, центр масс
-	
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{figure}[h!]
+			\includegraphics[width=1\linewidth]{images/pushes_my.png}
+			\caption{Модель силы толчка}
+		\end{figure}
+		\column{0.6\textwidth}
+		\begin{figure}[h!]
+			\includegraphics[width=1\linewidth]{images/degrees.png}
+			\caption{Модель изменения угла отклонения}
+		\end{figure}
+	\end{columns}
+\end{frame}
+\begin{frame}{Моделирование движения человека}
+	\begin{figure}[h!]
+		\includegraphics[width=0.7\linewidth]{images/center_mass_my.png}
+		\caption{Модель изменения саггитальной координаты центра масс}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Дальнейшие шаги}
 	\begin{itemize}
 		\item Провести моделирование с использованием реальных данных и построить оценку траектории центра масс
 		\item Сравнить реальное время возвращения в вертикальную позу с полученными при решении задачи быстродействия
-		\item Построить траеткорию центра масс при управленнии, полученным при решении задачи быстродействия
+		\item Построить траекторию центра масс при управленнии, полученном при решении задачи быстродействия
 	  \end{itemize}
 	
 \end{frame}
