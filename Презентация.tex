@@ -141,11 +141,37 @@ Reversion of initial posture by a person after a push}}
 
 \end{frame}
 
-\begin{frame}{Связь центра масс и центра дваления}
+\begin{frame}{Решение задачи быстродействия}
+	Требуется отобрать наименьший корень уравнений больший 1. При различных по знаку $u_*$.
+
+		\begin{columns}
+			\column{1\textwidth}
+			\begin{equation}\label{koshisystem}
+				\left[ {\begin{aligned}
+					& u_*z^2+\Omega _0-1-u_*=0, \hfill    \\
+					& (-u_* \Omega _0+u_*^2-u_*)z^4-4 u_*^2z^3+(2 u_* \Omega _0+6 u_*^2-\Omega _0^2+1)z^2- \hfill \\
+					& -4 u_*^2z+-u_* \Omega _0+u_*^2+u_*=0 \hfill    \\
+			   \end{aligned}} \right.
+			\end{equation}
+		\end{columns}
+		$\tau_f=\ln(z)$
+
+\end{frame}
+
+\begin{frame}{Определение начальных условий для задачи быстродействия}
+	Для корректного решения задачи быстродейсвтия необходимо правильно определить начальные условия после толчка.
+	
+	\hfill \\
+	Для этого необходимо построить оценку $\tilde{\eta}$ траектории центра масс системы
+	и взять значение $\tilde{\eta_0}$ в момент времени завершения толчка
+
+\end{frame}
+
+\begin{frame}{Связь центра масс и центра давления}
 		\begin{columns}
 		\column{0.5\textwidth}
 		\begin{figure}[h!]
-			\includegraphics[width=0.8\linewidth]{images/body.png}
+			\includegraphics[width=0.7\linewidth]{images/body_1.png}
 			\caption{Силы действующие на модель стержня, имитирующего тело человека}
 		\end{figure}
 		\column{0.5\textwidth}
@@ -191,33 +217,28 @@ Reversion of initial posture by a person after a push}}
 
 \begin{frame}{Связь центра масс и центра давления}
 	Cоотношение \eqref{eta_y} предлагается использовать для определения начальных условий движения сразу после толчка
-
-	Дальнейший анализ сводится к задаче Коши
-	\begin{equation}\label{eta_y_easy}
-		T^2\ddot{\eta}=\eta-y
-	\end{equation}
-	C начальными условиями $\eta(0)=\eta_0; \dot{\eta}(0)=\nu_0$, найденными из \eqref{eta_y}.
-
-	Далее необходимо построить оценку $\tilde\eta$ движения центра масс различными способами
+	
+	\hfill \\
+	Далее необходимо построить оценку $\tilde\eta$ движения центра масс различными способами, описанными в работах П.А. Кручинина
 \end{frame}
 
 \begin{frame}{Моделирование движения человека}
 	\begin{columns}
 		\column{0.5\textwidth}
 		\begin{figure}[h!]
-			\includegraphics[width=1\linewidth]{images/pushes_my.png}
+			\includegraphics[width=1\linewidth]{images/pushes_my_1.png}
 			\caption{Модель силы толчка}
 		\end{figure}
 		\column{0.6\textwidth}
 		\begin{figure}[h!]
-			\includegraphics[width=1\linewidth]{images/degrees.png}
+			\includegraphics[width=1\linewidth]{images/deg_my_1.png}
 			\caption{Модель изменения угла отклонения}
 		\end{figure}
 	\end{columns}
 \end{frame}
 \begin{frame}{Моделирование движения человека}
 	\begin{figure}[h!]
-		\includegraphics[width=0.7\linewidth]{images/center_mass_my.png}
+		\includegraphics[width=0.7\linewidth]{images/cm_my_1.png}
 		\caption{Модель изменения саггитальной координаты центра масс}
 	\end{figure}
 \end{frame}
