@@ -123,7 +123,7 @@ Reversion of initial posture by a person after a push}}
 \begin{frame}{Решение задачи быстродействия}
 	В прошлом году решалась задача быстродействия
 
-	Система разбивается на 3 этапа, на каждом из которых управление меняет знак
+	Система разбивается на 3 этапа, с чередованием знака управления
 
 	Решение сводится к отысканию корней полинома для нахождения времени возвращения в вертикальную позицию.
 
@@ -152,7 +152,10 @@ Reversion of initial posture by a person after a push}}
 			\end{cases}
 		\]\\*
 	\end{columns}
-	Начальные и конечные условия
+	
+\[
+    \tau=\frac{t}{t_\ast},\ t_\ast=\sqrt{\frac{J}{m_Tgl}},\ \varphi_\ast=\varphi_0-\varphi_k
+\]
 	\[
 		\theta(0)=1;\ \theta^{'}(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
 	\]
@@ -260,6 +263,7 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{basesystem} на тр�
 					& u_*z^2+\Omega _0-1-u_*=0, \hfill    \\
 					& (-u_* \Omega _0+u_*^2-u_*)z^4-4 u_*^2z^3+(2 u_* \Omega _0+6 u_*^2-\Omega _0^2+1)z^2- \hfill \\
 					& -4 u_*^2z+-u_* \Omega _0+u_*^2+u_*=0 \hfill    \\
+					& y=zx, \hfill                                                                                                              \\
 			   \end{aligned}} \right.
 			\end{equation}
 		\end{columns}
@@ -299,7 +303,7 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{basesystem} на тр�
     \left\{ {\begin{aligned}
                  & ml\ddot{\theta} = -R_y-F , \hfill   \\
                  & 0=R_z-mg, \hfill \\
-                 & J \ddot{\theta} = mlg\theta-Fl+M_x . \hfill             \\
+                 & J \ddot{\theta} = mlg\theta-Fl_1+M_x . \hfill             \\
             \end{aligned}} \right.
 \end{equation}
 	\column{0.5\textwidth}
@@ -314,12 +318,12 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{basesystem} на тр�
 
 	$$M_x=mgy-h\left(F+ml\ddot{\theta}\right)$$
 
-	$$\left(J+mlh\right)\ddot{\theta}=mgl\theta+mgy-Fl-Fh$$ 
+	$$\left(J+mlh\right)\ddot{\theta}=mgl\theta+mgy-Fl_1-Fh$$ 
 
 
- 	$$\frac{(J+mlh)l\ddot{\theta}}{mgl}=l\theta+y-\frac{F}{mg}(l+h);\quad \text{Замена: }\eta=-l\theta; \quad T^2=\frac{J+mlh}{mgl};$$
+ 	$$\frac{(J+mlh)l\ddot{\theta}}{mgl}=l\theta+y-\frac{F}{mg}(l_1+h);\quad \text{Замена: }\eta=-l\theta; \quad T^2=\frac{J+mlh}{mgl};$$
 \begin{equation}\label{eta_y}
-	T^2\ddot{\eta}=\eta-y+\frac{F}{mg}(l+h)
+	T^2\ddot{\eta}=\eta-y+\frac{F}{mg}(l_1+h)
 \end{equation}
 
 \end{frame}
@@ -333,7 +337,7 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{basesystem} на тр�
 
 \begin{frame}{Моделирование движения человека}
 	Модель движения человека, где $M=-C\theta-P\dot\theta$ - момент в голеностопе
-		$$J\ddot{\theta}=mgl\theta+M-Fl$$
+		$$J\ddot{\theta}=mgl\theta+M-Fl_1$$
 	\begin{columns}
 		\column{0.5\textwidth}
 		\begin{figure}[h!]
