@@ -15,6 +15,7 @@
 \usepackage{graphicx}
 \usepackage{lipsum}
 %\usepackage{rumathgrk1}
+
 %\usepackage{glonti}
 \defbeamertemplate*{footline}{Warsaw} {%
 \leavevmode%
@@ -29,11 +30,14 @@
 }%
 \vskip0pt%
 }
+
+
 % \setbeamersize
 % {
 %     text margin left=0.8cm,
 %     text margin right=0.8cm
 % }
+\renewcommand{\thempfootnote}{\arabic{mpfootnote}}
 \title{\textbf{Восстановление человеком исходной позы после толчка \\
 Reversion of initial posture by a person after a push}}
 
@@ -73,7 +77,8 @@ Reversion of initial posture by a person after a push}}
 		\column{0.55\textwidth}
 		\begin{figure}[h!]
 			\includegraphics[width=1\linewidth]{images/stabilos.png}
-			\caption{Характерный вид сагиттальной стабилограммы при наклоне при выполнении теста со ступенчатым воздействием\cite{PAKrychinin}}
+			\caption{Характерный вид сагиттальной стабилограммы при наклоне при выполнении теста со ступенчатым
+			 воздействием}
 		\end{figure}
 		\column{0.6\textwidth}
 		% \column{\dimexpr\paperwidth-2pt}
@@ -89,10 +94,11 @@ Reversion of initial posture by a person after a push}}
 \end{frame}
 
 \begin{frame}{Математическая модель}
+	Рассматривается задача возвращения в исходную позу после завершения толчка
 	\begin{columns}
 		\column{0.62\textwidth}
 		\begin{figure}[h!]
-			\includegraphics[width=1\linewidth]{images/inverse_pendulum.png}
+			\includegraphics[width=0.6\linewidth]{images/body_1.png}
 			\caption{Модель перевернутого маятника}
 		\end{figure}
 		\column{0.5\textwidth}
@@ -119,7 +125,7 @@ Reversion of initial posture by a person after a push}}
 
 	Система разбивается на 3 этапа, на каждом из которых управление меняет знак
 
-	В результате получилось численно-аналитическое решение, которое сводится к отысканию корней полинома для нахождения времени возвращения в вертикальную позицию.
+	Решение сводится к отысканию корней полинома для нахождения времени возвращения в вертикальную позицию.
 
 	$\theta - \text{угол отклонения от вертикали}$
 
@@ -130,7 +136,7 @@ Reversion of initial posture by a person after a push}}
 
 	\begin{columns}
 		\column{0.5\textwidth}
-		\begin{equation}\label{koshisystem}
+		\begin{equation}\label{basesystem}
 			\left\{ {\begin{aligned}
 						 & \theta^{'} = \omega , \hfill   \\
 						 & \omega^{'} = \theta+m , \hfill \\
@@ -146,9 +152,104 @@ Reversion of initial posture by a person after a push}}
 			\end{cases}
 		\]\\*
 	\end{columns}
+	Начальные и конечные условия
+	\[
+		\theta(0)=1;\ \theta^{'}(0)=\frac{t_\ast}{\varphi_\ast}\omega_0=\Omega_0;\ m(0)=0
+	\]
+	\[
+		\theta(\tau_f)=0;\ \theta^{'}(\tau_f)=0;\ m(\tau_f)=0
+	\]
+\end{frame}
+\begin{frame}{Решение задачи быстродействия}
+	Запишем функцию Понтрягина
+\[
+    H(\psi(t),y(t),u(t))=\psi_1\cdot\omega+\psi_2\cdot(\theta+m)+\psi_3\cdot u
+\]
+
+\begin{equation} \label{7}
+    \left\{ {\begin{aligned}
+                 & \psi^{'}_1=  - \frac{{\partial H}}{{\partial \theta}} = - \psi_2\hfill  \\
+                 & \psi^{'}_2=  - \frac{{\partial H}}{{\partial \omega }} = - \psi_1\hfill \\
+                 & \psi^{'}_3=  - \frac{{\partial H}}{{\partial m }} = - \psi_2 \hfill     \\
+            \end{aligned}} \right.
+\end{equation}
+При $\psi_3\equiv0$ следует, что $\psi_2\equiv0$ и $\psi_1\equiv0$ следовательно особого управления нет.
+
+Тогда для условия максимизации функции Понтрягина
+\[
+    u=
+    \begin{cases}
+        -u_{max}, & \text{при $\psi_3<0$}          \\
+        +u_{max}, & \text{при $\psi_3\geqslant 0$}
+    \end{cases}
+\]\\*
+\end{frame}
+\begin{frame}{Решение задачи быстродействия}
+Решая систему \eqref{7}, получим
+\[
+    \left\{ {\begin{aligned}
+                 & \psi_1 = -C_1e^\tau+C_2e^{-\tau}+C_3, \hfill  \\
+                 & \psi_2 = C_1e^\tau+C_2e^{-\tau} , \hfill      \\
+                 & \psi_3 = -C_1e^\tau+C_2e^{-\tau}+C_3 . \hfill \\
+            \end{aligned}} \right.
+\]
+Анализируя корни уравнения $\psi_3(\tau)=0$, для различной комбинации
+коэффициентов $C_1,C_2,C_3$, получим, что число корней не может быть больше двух. В системе может быть не более двух переключений $u$.
+
+Пусть первое переключение управления происходит в момент времени
+$\tau=\tau_1$, а второе в момент времени
+$\tau=\tau_2$. Рассмотрим систему \eqref{basesystem} на трех этапах,
+при переходе между которыми меняется управление.
+
 
 \end{frame}
 
+
+\begin{frame}{Решение задачи быстродействия}
+	Этап 1. $u=-u_*$ начальные условия
+\[
+    m(0)=0;\ \theta(0)=1;\ \omega(0)=\Omega_0;
+\]
+
+\[
+    \left\{ {\begin{aligned}
+                 & 0 = -\tau  u_*+c_1, \hfill                                                            \\
+                 & 1 = \frac{1}{2} e^{-\tau } \left(C_1 \left(e^{\tau }-1\right)^2+C_2 \left(e^{2
+                \tau }+1\right)+C_3 e^{2 \tau }-C_3+2 e^{\tau } \tau  u_*\right) , \hfill                \\
+                 & \Omega_0 = \frac{1}{2} e^{-\tau } \left(C_1 \left(e^{2 \tau }-1\right)+C_2 \left(e^{2
+                \tau }-1\right)+C_3 e^{2 \tau }+C_3+2 e^{\tau } u_*\right)  . \hfill                     \\
+            \end{aligned}} \right.
+\]
+
+\[
+    \left\{ {\begin{aligned}
+                 & m_1(\tau) = -\tau  u_*, \hfill                                                                         \\
+                 & \theta_1(\tau) = \frac{e^\tau+e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau-e^{-\tau})+\tau u_* , \hfill \\
+                 & \omega_1(\tau) =\frac{e^\tau-e^{-\tau}}{2}+\frac{\Omega_0-u_*}{2}(e^\tau+e^{-\tau})+u_*   . \hfill     \\
+            \end{aligned}} \right.
+\]
+Аналогично для 2 и 3 этапов
+\end{frame}
+\begin{frame}{Решение задачи быстродействия}
+	Условие сопряжения этих интервалов
+\[
+    \left\{ {\begin{aligned}
+                 & m_2(\tau_2) = m_3(\tau_2), \hfill            \\
+                 & \theta_2(\tau_2) =  \theta_3(\tau_2), \hfill \\
+                 & \omega_2(\tau_2) = \omega_3(\tau_2) . \hfill \\
+            \end{aligned}} \right.
+\]
+	Замена переменных
+\[
+    x=e^{\tau_1} ,\,\,y=e^{\tau_2} ,\,\,z=e^{\frac{\tau_f}{2}}
+\]
+		\begin{figure}[h!]
+			\includegraphics[width=0.8\linewidth]{images/control_intervals.png}
+			\caption{Интервалы переключения управления}
+		\end{figure}
+
+\end{frame}
+	
 \begin{frame}{Решение задачи быстродействия}
 	Требуется отобрать наименьший корень уравнений больший 1. При различных по знаку $u_*$.
 
@@ -167,7 +268,7 @@ Reversion of initial posture by a person after a push}}
 \end{frame}
 
 \begin{frame}{Определение начальных условий для задачи быстродействия}
-	Для корректного решения задачи быстродействия необходимо правильно определить начальные условия после толчка.
+	Для корректного решения задачи быстродействия необходимо определить начальные условия после толчка.
 	
 	\hfill \\
 	Для этого необходимо построить оценку $\tilde{\eta}$ траектории центра масс системы, зная траекторию центра давления,
@@ -175,7 +276,7 @@ Reversion of initial posture by a person after a push}}
 
 \end{frame}
 
-\begin{frame}{Связь центра масс и центра давления\cite{mechmodel}}
+\begin{frame}{Связь центра масс и центра давления}
 		\begin{columns}
 		\column{0.5\textwidth}
 		\begin{figure}[h!]
@@ -247,7 +348,7 @@ Reversion of initial posture by a person after a push}}
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Уравнение фильтра (композиция двух фильтров)}
+\begin{frame}{Алгоритм фильтрации (композиция двух фильтров)}
 
 Передаточная функция системы (\ref*{eta_y}) имеет вид 
 \[
@@ -260,7 +361,7 @@ Reversion of initial posture by a person after a push}}
 \[
 	G_1(s)=\frac{1}{Ts-1}, G_2(s)=\frac{1}{Ts+1}
 \]
-Оценка координаты центра масс может быть найдена, путем последовательного применения двух фильтров \cite{podoprihin}
+Оценка координаты центра масс может быть найдена, путем последовательного применения двух фильтров
 \[
 	T \dot{x}+x=-y \text{ в прямом времени}
 \]
@@ -270,7 +371,7 @@ Reversion of initial posture by a person after a push}}
 
 \end{frame}
 
-\begin{frame}{Уравнение фильтра (преобразование Фурье)}
+\begin{frame}{Алгоритм фильтрации (преобразование Фурье)}
 	$Y(\omega),N(\omega) - \text{Фурье образы y(t) и $\eta$(t)}$
 	\[
 		N(\omega)=G(i\omega)\cdot Y(\omega)
@@ -302,7 +403,7 @@ Reversion of initial posture by a person after a push}}
 			\caption{Ошибка оценивания}
 		\end{figure}
 	\end{columns}
-RMSE=0.1mm
+	$\sigma=0.1mm$
 \end{frame}
 \begin{frame}{Модельная оценка центра масс с использованием двойной фильтрации}
 	\begin{columns}
@@ -317,14 +418,13 @@ RMSE=0.1mm
 			\caption{Ошибка оценивания}
 		\end{figure}
 	\end{columns}
-RMSE=0.008mm
+$\sigma=0.008mm$
 \end{frame}
 \begin{frame}{Дальнейшие шаги}
 	\begin{enumerate}
 		\item Применить алгоритм двойной фильтрации и фильтрации через FFT для реальных показаний со стабилоанализатора
-		\item Получить оценку ц.м. и оценку скорости изменения ц.м. 
-		\item Получить оценку возникшего момента в голеностопном суставе из формулы $\Delta y=\frac{\Delta M}{P}$, где P - вес человека в момент завершения толчка
-		\item Подставить найденые $\eta$, $\dot{\eta}$, $M$ в решение задачи быстродействия
+		\item Получить оценку ц.м. и оценку скорости изменения ц.м. в момент времени завершения толчка
+		\item Определить характерную среднюю скорость изменения момента в голеностопе на участках возврата и подставить ее в управление $u_{\ast}=\frac{\dot{M}_{max}}{mgl\varphi_\ast t_\ast}$
 		\item Сравнить реальное время возвращения в вертикальную позу с полученными при решении задачи быстродействия
 		\item Построить траекторию центра масс при управленнии, полученном при решении задачи быстродействия
 	  \end{enumerate}
@@ -337,6 +437,8 @@ RMSE=0.008mm
     // Биофизика. – 2019. – Т. 64, №5. – С. 1–11.
 	\bibitem{mechmodel}П.А. Кручинин Механические модели в стабилометрии // Российский журнал биомеханики. – 2014. – Т. 18, №2. – С. 184–193.
 	\bibitem{podoprihin}П.А. Кручинин, М.А. Подоприхин, И.Д. Бекеров Сравнительный анализ алгоритмов оценки движения центра масс по результатам стабилометрических измерений // Биофизика – 2021. – Т. 66, №5. – С. 997–1004. 
+	\bibitem{Optimal} Александров В.В., Лемак С.С., Парусников Н.А. Лекции по механике управляемых систем. Москва, Механико-математический факультет МГУ, 2020, 165 с.
+	\bibitem{atansfalb}Фалб Питер Л., Атанс Майкл Оптимальное управление, Машиностроение, 1968, 764 с.
 \end{thebibliography}
 \end{frame}
 \end{document}
