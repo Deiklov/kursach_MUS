@@ -73,7 +73,7 @@ Reversion of initial posture by a person after a push}}
 		\column{0.55\textwidth}
 		\begin{figure}[h!]
 			\includegraphics[width=1\linewidth]{images/stabilos.png}
-			\caption{Характерный вид сагиттальной стабилограммы при выполнении теста со ступенчатым воздействием}
+			\caption{Характерный вид сагиттальной стабилограммы при наклоне при выполнении теста со ступенчатым воздействием\cite{PAKrychinin}}
 		\end{figure}
 		\column{0.6\textwidth}
 		% \column{\dimexpr\paperwidth-2pt}
@@ -120,6 +120,14 @@ Reversion of initial posture by a person after a push}}
 	Система разбивается на 3 этапа, на каждом из которых управление меняет знак
 
 	В результате получилось численно-аналитическое решение, которое сводится к отысканию корней полинома для нахождения времени возвращения в вертикальную позицию.
+
+	$\theta - \text{угол отклонения от вертикали}$
+
+	$\omega - \text{угловая скорость тела}$
+
+	$m - \text{момент, возникающий в голеностопном суставе}$
+
+
 	\begin{columns}
 		\column{0.5\textwidth}
 		\begin{equation}\label{koshisystem}
@@ -162,12 +170,12 @@ Reversion of initial posture by a person after a push}}
 	Для корректного решения задачи быстродействия необходимо правильно определить начальные условия после толчка.
 	
 	\hfill \\
-	Для этого необходимо построить оценку $\tilde{\eta}$ траектории центра масс системы
+	Для этого необходимо построить оценку $\tilde{\eta}$ траектории центра масс системы, зная траекторию центра давления,
 	и взять значение $\tilde{\eta_0}$ и $\tilde{\dot{\eta_0}}$ в момент времени завершения толчка
 
 \end{frame}
 
-\begin{frame}{Связь центра масс и центра давления}
+\begin{frame}{Связь центра масс и центра давления\cite{mechmodel}}
 		\begin{columns}
 		\column{0.5\textwidth}
 		\begin{figure}[h!]
@@ -223,33 +231,112 @@ Reversion of initial posture by a person after a push}}
 \end{frame}
 
 \begin{frame}{Моделирование движения человека}
+	Модель движения человека, где $M=-C\theta-P\dot\theta$ - момент в голеностопе
+		$$J\ddot{\theta}=mgl\theta+M-Fl$$
 	\begin{columns}
 		\column{0.5\textwidth}
 		\begin{figure}[h!]
 			\includegraphics[width=1\linewidth]{images/pushes_my_1.png}
 			\caption{Модель силы толчка}
 		\end{figure}
-		\column{0.6\textwidth}
+		\column{0.5\textwidth}
 		\begin{figure}[h!]
 			\includegraphics[width=1\linewidth]{images/deg_my_1.png}
 			\caption{Модель изменения угла отклонения}
 		\end{figure}
 	\end{columns}
 \end{frame}
-\begin{frame}{Моделирование движения человека}
-	\begin{figure}[h!]
-		\includegraphics[width=0.7\linewidth]{images/cm_my_1.png}
-		\caption{Модель изменения саггитальной координаты центра масс}
-	\end{figure}
+
+\begin{frame}{Уравнение фильтра (композиция двух фильтров)}
+
+Передаточная функция системы (\ref*{eta_y}) имеет вид 
+\[
+	G(s)=-\frac{1}{T^2s^2-1}
+\]
+Ее можно представить в виде композиции двух фильтров
+\[
+	G(s)=G_1(s)\cdot G_2(s) 
+\]
+\[
+	G_1(s)=\frac{1}{Ts-1}, G_2(s)=\frac{1}{Ts+1}
+\]
+Оценка координаты центра масс может быть найдена, путем последовательного применения двух фильтров \cite{podoprihin}
+\[
+	T \dot{x}+x=-y \text{ в прямом времени}
+\]
+\[
+	T \dot{\eta}-\eta=x \text{ в обратном времени}
+\]
+
 \end{frame}
 
-\begin{frame}{Дальнейшие шаги}
-	\begin{itemize}
-		\item Провести дальнейшее моделирование и построить оценку траектории центра масс
-		\item Сравнить реальное время возвращения в вертикальную позу с полученными при решении задачи быстродействия
-		\item Построить траекторию центра масс при управленнии, полученном при решении задачи быстродействия
-	  \end{itemize}
+\begin{frame}{Уравнение фильтра (преобразование Фурье)}
+	$Y(\omega),N(\omega) - \text{Фурье образы y(t) и $\eta$(t)}$
+	\[
+		N(\omega)=G(i\omega)\cdot Y(\omega)
+	\]
+	Представим $y(t)=a(t-t_0)+b+\delta(t)$ 
+
+	$a=\frac{y(t_f)-y(t_0)}{t_f-t_0}, b=y(t_0)$, тогда оценка координаты центра масс может быть найдена из
+
+	$\eta(t)=a(t-t_0)+b+\chi(t)$, где $\chi(t)$ - Фурье праобраз $N(\omega)$
 	
 \end{frame}
 
+\begin{frame}{Моделирование движения человека}
+	\begin{figure}[h!]
+		\includegraphics[width=0.7\linewidth]{images/cm_my_1.png}
+		\caption{Модель изменения саггитальной координаты центра масс и центра давления}
+	\end{figure}
+\end{frame}
+\begin{frame}{Модельная оценка центра масс с использованием FFT}
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{figure}[h!]
+			\includegraphics[width=1\linewidth]{images/eta_after_FFT.png}
+			\caption{Реальное и восстановленное значение $\eta$}
+		\end{figure}
+		\column{0.5\textwidth}
+		\begin{figure}[h!]
+			\includegraphics[width=1\linewidth]{images/error_after_fft.png}
+			\caption{Ошибка оценивания}
+		\end{figure}
+	\end{columns}
+RMSE=0.1mm
+\end{frame}
+\begin{frame}{Модельная оценка центра масс с использованием двойной фильтрации}
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{figure}[h!]
+			\includegraphics[width=1\linewidth]{images/eta_after_filtering.png}
+			\caption{Реальное и восстановленное значение $\eta$}
+		\end{figure}
+		\column{0.5\textwidth}
+		\begin{figure}[h!]
+			\includegraphics[width=1\linewidth]{images/error_efter_filtering.png}
+			\caption{Ошибка оценивания}
+		\end{figure}
+	\end{columns}
+RMSE=0.008mm
+\end{frame}
+\begin{frame}{Дальнейшие шаги}
+	\begin{enumerate}
+		\item Применить алгоритм двойной фильтрации и фильтрации через FFT для реальных показаний со стабилоанализатора
+		\item Получить оценку ц.м. и оценку скорости изменения ц.м. 
+		\item Получить оценку возникшего момента в голеностопном суставе из формулы $\Delta y=\frac{\Delta M}{P}$, где P - вес человека в момент завершения толчка
+		\item Подставить найденые $\eta$, $\dot{\eta}$, $M$ в решение задачи быстродействия
+		\item Сравнить реальное время возвращения в вертикальную позу с полученными при решении задачи быстродействия
+		\item Построить траекторию центра масс при управленнии, полученном при решении задачи быстродействия
+	  \end{enumerate}
+	
+\end{frame}
+\begin{frame}{Список основной используемой литературы}
+
+\begin{thebibliography}{15}
+	\bibitem{PAKrychinin}П.А. Кручинин Анализ результатов стабилометрических тестов со ступенчатым воздействием с точки зрения механики управляемых систем
+    // Биофизика. – 2019. – Т. 64, №5. – С. 1–11.
+	\bibitem{mechmodel}П.А. Кручинин Механические модели в стабилометрии // Российский журнал биомеханики. – 2014. – Т. 18, №2. – С. 184–193.
+	\bibitem{podoprihin}П.А. Кручинин, М.А. Подоприхин, И.Д. Бекеров Сравнительный анализ алгоритмов оценки движения центра масс по результатам стабилометрических измерений // Биофизика – 2021. – Т. 66, №5. – С. 997–1004. 
+\end{thebibliography}
+\end{frame}
 \end{document}
