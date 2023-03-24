@@ -255,15 +255,20 @@ $\tau=\tau_2$. Рассмотрим систему \eqref{basesystem} на тр�
 	
 \begin{frame}{Решение задачи быстродействия}
 	Требуется отобрать наименьший корень уравнений больший 1. При различных по знаку $u_*$.
-
+	
 		\begin{columns}
 			\column{1\textwidth}
+			\begin{equation}\label{koshisystem}
+				 {\begin{aligned}
+					& x=\left( \frac{1}{2z}-\frac{u_*z}{2}-(\Omega_0-u_*)\frac{1}{2z}\right)\frac{z}{u_*(1-z)} \hfill	\\
+					& y=zx, \hfill                                                                                              \\
+			   \end{aligned}}
+			\end{equation}
 			\begin{equation}\label{koshisystem}
 				\left[ {\begin{aligned}
 					& u_*z^2+\Omega _0-1-u_*=0, \hfill    \\
 					& (-u_* \Omega _0+u_*^2-u_*)z^4-4 u_*^2z^3+(2 u_* \Omega _0+6 u_*^2-\Omega _0^2+1)z^2- \hfill \\
-					& -4 u_*^2z+-u_* \Omega _0+u_*^2+u_*=0 \hfill    \\
-					& y=zx, \hfill                                                                                                              \\
+					& -4 u_*^2z+-u_* \Omega _0+u_*^2+u_*=0                                                                                           \\
 			   \end{aligned}} \right.
 			\end{equation}
 		\end{columns}
