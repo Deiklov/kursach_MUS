@@ -10,7 +10,8 @@
 %\renewcommand{\rmdefault}{ftm}
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
-
+% Please add the following required packages to your document preamble:
+\usepackage{booktabs}
 %% Номера формул
 %\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
 %\usepackage{leqno} % Нумерация формул слева
@@ -230,7 +231,7 @@
 соотношения в безразмерном виде. Для этого перейдем
 к новым переменным
 \[
-    \theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{m_Tgl\varphi}.
+    \theta=\frac{\varphi-\varphi_k}{\varphi_\ast},\ \ m=\frac{M-M_f}{m_Tgl\varphi_\ast}.
 \]
 
 В качестве характерного значения угла выберем разность
@@ -646,6 +647,109 @@ $\Omega_0=\frac{t_\ast}{\varphi_\ast}\omega_0=0.274$
     \item Показано, что решение оптимальной задачи быстродействия при ограниченной скорости изменения момента в голеностопном суставе может иметь решение, которое хорошо качественно совпадает с картиной, наблюдаемой в стабилометрических исследованиях.
     \item Время необходимое для восстановления исходной позы получилось соизмеримым с реальным времени возвращения после толчка.
 \end{itemize}
+\newpage
+\section{Экспериментальные данные }
+Экспериментальные данные  
+
+beginPush=1130
+
+
+realT=1.5;
+
+Fmax=6.87;
+
+Ftime=(168-155)/50;
+
+Mom=(9.69+19.2)*m*g/1000=19.21;
+
+theta0=0.028;
+
+omega0=0.1767;
+
+tast=0.1729;
+
+///////
+
+beginPush=1116
+
+
+realT=2.0
+
+Fmax=6.01
+
+Ftime=(244-231)/50
+
+Mom=(6.42+15.96)*m*g/1000=14.88
+
+theta0=0.0292
+
+omega0=0.149
+
+tast=0.1729
+
+////////
+
+beginPush=1182
+
+
+realT=1.97
+
+Fmax=8.21
+
+Ftime=(202-189)/50
+
+Mom=(29-2)*m*g/1000
+
+theta0=0.0337
+
+omega0=0.1689
+
+//////
+
+beginPush=1207
+realT=1.97
+
+Fmax=8.56
+
+Ftime=(200-187)/50
+
+Mom=(29-0)*m*g/1000
+
+theta0=0.0335
+
+omega0=0.1955
+
+///////
+
+beginPush=1225
+
+realT=2.5
+
+Fmax=9.73
+
+Ftime=(110-97)/50
+
+Mom=(35-5)*m*g/1000
+
+theta0=0.0359
+
+omega0=0.2139
+
+\begin{table}[h]
+    \caption{Таблица толчков} 
+    \label{tab:example}
+    \small
+    \centering
+    \begin{tabular}{|l|c|c|c|c|c}
+    \midrule
+    \textbf{} & \textbf{Fmax(Н)} & \textbf{Время толчка(сек)} & \textbf{ $\phi_0$} \textbf{$\omega_0$} & \textbf{Момент после толчка(кг*м)} & \\ 
+    \midrule
+    Item 1 & Item 2 & Item 3 & Item 4 \\
+    \midrule
+    Item 1 & Item 2 & Item 3 & Item 4\\
+    \midrule
+    \end{tabular}
+ \end{table}
 \newpage
 \addcontentsline{toc}{section}{Список используемой литературы}
 \begin{thebibliography}{15}
